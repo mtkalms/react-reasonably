@@ -3,8 +3,7 @@ import Reveal from 'reveal.js';
 import Highlight from 'reveal.js/plugin/highlight/highlight';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/black.css'; 
-import './styles/highlight/shades-of-purple.css'
-import './styles/global.css'
+import './highlight/shades-of-purple.css'
 
 function App() {
   const deckDivRef = useRef<HTMLDivElement>(null); // reference to deck container div
