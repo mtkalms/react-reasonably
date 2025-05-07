@@ -1,6 +1,4 @@
-import type { BlockProps } from "./Block";
-
-interface CodeBlockProps extends BlockProps {
+interface CodeBlockProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   
 }
 
@@ -8,9 +6,9 @@ function CodeBlock({
   children,
   ...props
 }: CodeBlockProps) {
-  return <div className="w-full h-full text-left" {...props}>
-    <pre>
-      <code data-trim data-noescape>
+  return <div className="w-full text-left">
+    <pre className="!m-0 p-15 !w-full">
+      <code data-noescape className="!w-full !bg-transparent" {...props}>
       {children}
       </code>
     </pre>
