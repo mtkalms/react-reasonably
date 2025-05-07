@@ -4,6 +4,7 @@ import Highlight from 'reveal.js/plugin/highlight/highlight';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/black.css'; 
 import './highlight/shades-of-purple.css'
+import BasicsChapter from './chapters/basics';
 
 function App() {
   const deckDivRef = useRef<HTMLDivElement>(null); // reference to deck container div
@@ -16,7 +17,8 @@ function App() {
       deckRef.current = new Reveal(deckDivRef.current!, {
           transition: "slide",
           plugins: [Highlight],
-          // other config options
+          width: 1920,
+          height: 1080,
       });
 
       deckRef.current.initialize().then(() => {
@@ -37,15 +39,7 @@ function App() {
   return <div className="absolute h-full w-full inset-0">
     <div className="reveal" ref={deckDivRef}>
         <div className="slides">
-            <section>
-              <h1>Mew</h1>
-              <pre>
-                <code data-trim data-noescape className="language-typescript">
-                  {`const deckDivRef = useRef<HTMLDivElement>(null)`}
-                </code>
-              </pre>
-            </section>
-            <section>Slide 2</section>
+          <BasicsChapter/>
         </div>
     </div>
   </div>
