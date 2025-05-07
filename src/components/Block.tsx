@@ -6,7 +6,7 @@ function Block({
   children,
   ...props
 }: BlockProps) {
-  return <div className="w-full h-full text-left" {...props}>
+  return <div className="w-full text-left" {...props}>
     {children}
   </div>
 }

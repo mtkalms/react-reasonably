@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Reveal from 'reveal.js';
 import Highlight from 'reveal.js/plugin/highlight/highlight';
-import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/black.css'; 
-import './highlight/shades-of-purple.css'
 import BasicsChapter from './chapters/basics';
 
 function App() {

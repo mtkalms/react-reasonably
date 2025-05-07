@@ -3,6 +3,7 @@ import CodeBlock from "../../components/CodeBlock";
 import Section from "../../components/Section";
 import ExampleRaw from './example?raw';
 import Example from './example';
+import Browser from "../../components/Browser";
 
 const CHAPTER = "React Basics"
 
@@ -22,7 +23,9 @@ function BasicsChapter() {
         </ul>
       </Block>
       <div className="flex flex-col gap-4">
-        <Example/>
+        <Browser>
+          <Example/>
+        </Browser>
         <CodeBlock>
           {ExampleRaw}
         </CodeBlock>

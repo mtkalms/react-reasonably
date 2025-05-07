@@ -68,3 +68,44 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@theme {
+  --primary: #FAD000;
+  --default: #1E1E3F;
+  --contrast: #191830;
+  --highlight: #A599E9;
+  --terminal-background: #;
+  --terminal-foreground: #FFFFFF;
+  --terminal-ansiBlack: #000000;
+  --terminal-ansiRed: #EC3A37F5;
+  --terminal-ansiGreen: #3AD900;
+  --terminal-ansiYellow: #FAD000;
+  --terminal-ansiBlue: #7857fe;
+  --terminal-ansiMagenta: #FF2C70;
+  --terminal-ansiCyan: #80FCFF;
+  --terminal-ansiWhite: #FFFFFF;
+} 
+
+@layer components {
+  .browser {
+    .example {
+      form {
+        @apply max-w-3xs;
+        @apply flex flex-col gap-6;
+        & > div {
+          @apply flex gap-4;
+        }
+        button {
+          @apply !text-[var(--highlight)] hover:!text-[var(--primary)] !font-bold;
+          @apply outline-0 !border-2 !border-[var(--highlight)] hover:!border-[var(--primary)];
+          @apply !bg-[var(--default)] ;
+        }
+        input {
+          @apply outline-0 border-b-2;
+          @apply pb-0.25;
+          @apply border-b-[var(--highlight)] hover:border-[var(--primary)] focus:border-[var(--primary)];
+        }
+      }
+    }
+  }
+}
