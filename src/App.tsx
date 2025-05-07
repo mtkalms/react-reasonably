@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import Reveal from 'reveal.js';
 import Highlight from 'reveal.js/plugin/highlight/highlight';
 import BasicsChapter from './chapters/basics';
+import Title from './components/Title';
 
 function App() {
   const deckDivRef = useRef<HTMLDivElement>(null); // reference to deck container div
@@ -36,6 +37,7 @@ function App() {
   return <div className="absolute h-full w-full inset-0">
     <div className="reveal" ref={deckDivRef}>
         <div className="slides">
+            <Title title="React Reasonably" subtitle="A practical guide for the impatient developer"/>
           <BasicsChapter/>
         </div>
     </div>
