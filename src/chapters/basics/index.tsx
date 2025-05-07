@@ -9,6 +9,12 @@ const CHAPTER = "React Basics"
 function BasicsChapter() {
 
   return <>
+    <Section chapter={CHAPTER}/>
+    <Section chapter={CHAPTER}>
+      <ul>
+        <li>JSX</li>
+      </ul>
+    </Section>
     <Section chapter={CHAPTER} section="JSX">
       <Block>
         <ul>
