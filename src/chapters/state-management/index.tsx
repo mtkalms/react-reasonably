@@ -6,6 +6,9 @@ import TextBlock from "@components/Block";
 import exampleConstantsCode from "./examples/example-constants?raw"
 import InteractiveExampleConstants from "./examples/InteractiveExampleConstants";
 
+import exampleUseRefCode from "./examples/example-useRef?raw"
+import ExampleUseRef from "./examples/example-useRef"
+
 const CHAPTER = "State Management"
 const TAGLINE = "Persist, if you must!"
 const SECTION = [
@@ -27,20 +30,19 @@ function StateManagementChapter() {
       </ul>
     </Section>
     <Section chapter={CHAPTER} section="Constants">
-      <Block>
+      <TextBlock>
         <ul>
           <li>Temporarily stores values</li>
-          <li>Resets on every <b>render</b></li>
-          <li>Does <b>not</b> trigger a rerender</li>
-          <li>Usually used to reuse complex expressions</li>
+          <li>Resets on every <em>render</em></li>
+          <li><em>Non-reactive:</em> does not trigger re-render</li>
+          <li>Used to reuse <em>complex expressions</em></li>
         </ul>
         {/* <Message>
-          <b>Common Code Smell:</b>  We commonly see functions used instead of constants. 
+          <em>Common Code Smell:</em>  We commonly see functions used instead of constants. 
           In most cases, these are reminents from the days of component classes.
           As long as the expression only depends on props and states, there is no need to reevaluate it in between renders.
         </Message> */}
-      </Block>
-
+      </TextBlock>
       <div className="flex flex-col gap-4">
         <Browser>
           <InteractiveExampleConstants/>
@@ -51,14 +53,22 @@ function StateManagementChapter() {
       </div>
     </Section>
     <Section chapter={CHAPTER} section="useRef">
-      <Block>
+      <TextBlock>
         <ul>
-          <li>Stores values throughout renders</li>
-          <li>Resets on every <b>mount</b></li>
-          <li>Does <b>not</b> trigger a rerender</li>
-          <li>Usually used to reference components</li>
+          <li>Persists values over renders</li>
+          <li>Resets on every <em>mount</em></li>
+          <li><em>Non-reactive:</em> does not trigger re-render</li>
+          <li>Used to reference <em>HTML elements</em> or as <em>instance variable</em></li>
         </ul>
-      </Block>
+      </TextBlock>
+      <div className="flex flex-col gap-4">
+        <Browser>
+          <ExampleUseRef/>
+        </Browser>
+        <CodeBlock>
+          {exampleUseRefCode}
+        </CodeBlock>
+      </div>
     </Section>
     <Section chapter={CHAPTER} section="useState">
     </Section>
