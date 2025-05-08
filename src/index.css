@@ -74,16 +74,16 @@ button:focus-visible {
   --default: #1E1E3F;
   --contrast: #191830;
   --highlight: #A599E9;
-  --terminal-background: #;
+  --terminal-background: #1E1E3F;
   --terminal-foreground: #FFFFFF;
-  --terminal-ansiBlack: #000000;
-  --terminal-ansiRed: #EC3A37F5;
-  --terminal-ansiGreen: #3AD900;
-  --terminal-ansiYellow: #FAD000;
-  --terminal-ansiBlue: #7857fe;
-  --terminal-ansiMagenta: #FF2C70;
-  --terminal-ansiCyan: #80FCFF;
-  --terminal-ansiWhite: #FFFFFF;
+  --terminal-black: #000000;
+  --terminal-red: #EC3A37F5;
+  --terminal-green: #3AD900;
+  --terminal-yellow: #FAD000;
+  --terminal-blue: #7857fe;
+  --terminal-magenta: #FF2C70;
+  --terminal-cyan: #80FCFF;
+  --terminal-white: #FFFFFF;
 } 
 
 @layer components {

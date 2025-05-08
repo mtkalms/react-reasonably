@@ -5,8 +5,8 @@ function InteractiveExampleConstants() {
   const [closed, setClosed] =useState<boolean>(false);
   const [readOnly, setReadOnly] = useState<boolean>(false);
 
-  return <div className="flex w-full h-full items-center gap-8">
-    <div className="w-full">
+  return <div className="flex w-full h-full items-stretch gap-8">
+    <div className="w-full flex items-center">
       <ExampleConstants status={closed ? "closed" : "open"} readOnly={readOnly}/>
     </div>
     <div className="bg-[var(--contrast)] w-sm py-2 text-left flex flex-col gap-2 -m-5 rounded-br-xl">
