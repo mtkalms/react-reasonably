@@ -5,7 +5,6 @@ import Section from "../../components/Section";
 import exampleConstantsCode from "./examples/example-constants?raw"
 import Block from "../../components/Block";
 import InteractiveExampleConstants from "./examples/InteractiveExampleConstants";
-import Message from "../../components/Message";
 
 const CHAPTER = "State Management"
 const TAGLINE = "Persist, if you must!"
