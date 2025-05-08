@@ -1,9 +1,9 @@
-import Block from "../../components/Block";
-import CodeBlock from "../../components/CodeBlock";
-import Section from "../../components/Section";
+import Block from "@components/Block";
+import CodeBlock from "@components/CodeBlock";
+import Section from "@components/Section";
+import Browser from "@components/Browser";
 import ExampleRaw from './example?raw';
 import Example from './example';
-import Browser from "../../components/Browser";
 
 const CHAPTER = "React Basics"
 

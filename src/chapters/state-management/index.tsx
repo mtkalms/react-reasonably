@@ -1,9 +1,9 @@
-import Browser from "../../components/Browser";
-import CodeBlock from "../../components/CodeBlock";
-import Section from "../../components/Section";
+import Browser from "@components/Browser";
+import CodeBlock from "@components/CodeBlock";
+import Section from "@components/Section";
+import Block from "@components/Block";
 
 import exampleConstantsCode from "./examples/example-constants?raw"
-import Block from "../../components/Block";
 import InteractiveExampleConstants from "./examples/InteractiveExampleConstants";
 
 const CHAPTER = "State Management"

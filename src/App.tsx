@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 import Reveal from 'reveal.js';
 import Highlight from 'reveal.js/plugin/highlight/highlight';
-import BasicsChapter from './chapters/basics';
-import StateManagementChapter from './chapters/state-management';
-import Title from './components/Title';
+import BasicsChapter from '@chapters/basics';
+import StateManagementChapter from '@chapters/state-management';
+import Title from '@components/Title';
 
 function App() {
   const deckDivRef = useRef<HTMLDivElement>(null); // reference to deck container div
