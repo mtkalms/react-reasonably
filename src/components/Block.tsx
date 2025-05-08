@@ -1,15 +1,15 @@
-interface BlockProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface TextBlockProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 
 }
 
-function Block({
+function TextBlock({
   children,
   ...props
-}: BlockProps) {
-  return <div className="w-full text-left" {...props}>
+}: TextBlockProps) {
+  return <div className="w-full text-left px-5" {...props}>
     {children}
   </div>
 }
 
-export default Block;
-export type { BlockProps };
+export default TextBlock;
+export type { TextBlockProps };

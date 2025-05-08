@@ -1,7 +1,7 @@
 import Browser from "@components/Browser";
 import CodeBlock from "@components/CodeBlock";
 import Section from "@components/Section";
-import Block from "@components/Block";
+import TextBlock from "@components/Block";
 
 import exampleConstantsCode from "./examples/example-constants?raw"
 import InteractiveExampleConstants from "./examples/InteractiveExampleConstants";

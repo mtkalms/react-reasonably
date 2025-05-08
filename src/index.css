@@ -87,7 +87,10 @@ button:focus-visible {
 } 
 
 @layer components {
-  b {
+  .caption {
+    font-size: 24pt;
+  }
+  b, em {
     @apply text-[var(--primary)];
   }
   ul {
@@ -95,27 +98,30 @@ button:focus-visible {
       @apply py-2;
     }
 
-    b {
-      @apply animate-pulse;
+    em {
+      @apply animate-pulse !not-italic;
     }
   }
   .browser {
     .example {
+      button {
+        @apply !text-[var(--highlight)] hover:!text-[var(--primary)] !font-bold;
+        @apply outline-0 !border-2 !border-[var(--highlight)] hover:!border-[var(--primary)];
+        @apply !bg-[var(--default)] ;
+      }
+      input {
+        @apply outline-0 border-b-2;
+        @apply pb-0.25;
+        @apply border-b-[var(--highlight)] hover:border-[var(--primary)] focus:border-[var(--primary)];
+      }
+      footer {
+        @apply max-w-3xs mt-5 text-left;
+      }
       form {
         @apply max-w-3xs;
         @apply flex flex-col gap-6;
         & > div {
           @apply flex gap-4;
-        }
-        button {
-          @apply !text-[var(--highlight)] hover:!text-[var(--primary)] !font-bold;
-          @apply outline-0 !border-2 !border-[var(--highlight)] hover:!border-[var(--primary)];
-          @apply !bg-[var(--default)] ;
-        }
-        input {
-          @apply outline-0 border-b-2;
-          @apply pb-0.25;
-          @apply border-b-[var(--highlight)] hover:border-[var(--primary)] focus:border-[var(--primary)];
         }
       }
     }
