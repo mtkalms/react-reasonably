@@ -87,6 +87,18 @@ button:focus-visible {
 } 
 
 @layer components {
+  b {
+    @apply text-[var(--primary)];
+  }
+  ul {
+    li {
+      @apply py-2;
+    }
+
+    b {
+      @apply animate-pulse;
+    }
+  }
   .browser {
     .example {
       form {

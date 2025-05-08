@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import Reveal from 'reveal.js';
 import Highlight from 'reveal.js/plugin/highlight/highlight';
 import BasicsChapter from './chapters/basics';
+import StateManagementChapter from './chapters/state-management';
 import Title from './components/Title';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <div className="slides">
             <Title title="React Reasonably" subtitle="A practical guide for the impatient developer"/>
           <BasicsChapter/>
+          <StateManagementChapter/>
         </div>
     </div>
   </div>
