@@ -6,6 +6,7 @@ import ExampleRaw from './examples/example-jsx?raw';
 import Example from './examples/example-jsx';
 import destructuring from './examples/example-destructuring?raw'
 import initializer from './examples/example-initializer?raw'
+import evaluation from './examples/example-evaluation?raw'
 
 const CHAPTER = "React Basics"
 
@@ -27,6 +28,8 @@ function BasicsChapter() {
     <Section chapter={CHAPTER} section="Common Typescript Patterns">
       <TextBlock>
         <ul>
+          <li><b>Short-Circuiting</b> for conditional evaluation</li>
+          <li><b>Ternary Operator</b> for if-else cases</li>
           <li><b>Destructuring</b> to extract object entries</li>
           <li><b>Alias</b> to also rename the entry</li>
           <li><b>Rest Operator</b> to bundle the other entries</li>
@@ -35,6 +38,12 @@ function BasicsChapter() {
         </ul>
       </TextBlock>
       <div className="flex flex-col items-start gap-4">
+        <span className="caption">
+          Short-Circuiting + Ternary Operator
+        </span>
+        <CodeBlock>
+          {evaluation}
+        </CodeBlock>
         <span className="caption">
           Destructuring + Alias + Rest Operator
         </span>
@@ -56,8 +65,9 @@ function BasicsChapter() {
           <li>All attributes are in <b>camelCase</b> (class is <b>className</b>)</li>
           <li>Must always have exactly on root element</li>
           <li><b>{"<>"}</b> Fragments can be used as virtual root <b>{"</>"}</b></li>
-          <li><b>{"{"}</b> JavaScript in curly braces <b>{"}"}</b></li>
+          <li><b>{"{"}</b> JavaScript in curly braces (one-liners only) <b>{"}"}</b></li>
           <li>Custom components <b>{"<ExampleJSX/>"}</b></li>
+          <li>All elements created in a loop need a unique <b>key</b> attribute</li>
         </ul>
       </TextBlock>
       <div className="flex flex-col gap-4">
