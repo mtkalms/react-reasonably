@@ -12,6 +12,9 @@ import ExampleUseRef from "./examples/example-useRef"
 import exampleUseStateCode from "./examples/example-useState?raw"
 import ExampleUseState from "./examples/example-useState"
 
+import exampleUseReducerCode from "./examples/example-useReducer?raw"
+import InteractiveExampleUseReducer from "./examples/InteractiveExampleUseReducer"
+
 const CHAPTER = "State Management"
 const TAGLINE = "Persist, if you must!"
 const SECTION = [
@@ -97,9 +100,17 @@ function StateManagementChapter() {
           <li>Stores value over renders</li>
           <li>Resets on every <em>mount</em></li>
           <li><em>Reactive:</em> triggers re-render when changed</li>
-          <li>Used for complex containers, transitions and conditional updates</li>
+          <li>Used for complex state containers and transitions</li>
         </ul>
       </TextBlock>
+      <div className="flex flex-col gap-4">
+        <Browser>
+          <InteractiveExampleUseReducer/>
+        </Browser>
+        <CodeBlock>
+          {exampleUseReducerCode}
+        </CodeBlock>
+      </div>
     </Section>
     <Section chapter={CHAPTER} section={"useContext"}>
     </Section>

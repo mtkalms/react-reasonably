@@ -104,6 +104,10 @@ button:focus-visible {
   }
   .browser {
     .example {
+      @apply text-left;
+      h1 {
+        @apply !text-[var(--primary)] !m-0 !p-0 !text-xl;
+      }
       span {
         @apply flex items-center gap-2;
       }
