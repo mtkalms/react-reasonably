@@ -1,5 +1,5 @@
 interface SectionProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-  chapter: string,
+  chapter?: string,
   tagline?: string,
   section?: string,
 }
@@ -22,11 +22,11 @@ function Section({
     <div className="w-full h-full flex gap-4 items-center pb-30">
       {section ? <>{children}</> :
         <>
-          <div className="w-full h-full flex flex-col gap-4 items-center justify-center">
+          {chapter && <div className="w-full h-full flex flex-col gap-4 items-center justify-center">
             <span className="text-[var(--primary)] font-bold text-8xl">{chapter}</span>
             <span className="text-[var(--highlight)] font-semibold">{tagline}</span>
-          </div>
-          <div className="w-full border-l-4 border-l-[var(--primary)] text-left py-20 px-15">
+          </div>}
+          <div className={`w-full ${chapter ? "border-l-4 border-l-[var(--primary)]" : ""} text-left py-20 px-15`}>
             {children}
           </div>
         </>

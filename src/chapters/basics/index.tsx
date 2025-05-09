@@ -18,6 +18,10 @@ function BasicsChapter() {
       <ul>
         <li>Common TypeScript Patterns</li>
         <li>JSX</li>
+        <li>Components</li>
+        <li>Component Props</li>
+        <li>Component State</li>
+        <li>Lifecycle Effects</li>
       </ul>
     </Section>
     <Section chapter={CHAPTER} section="Common Typescript Patterns">
