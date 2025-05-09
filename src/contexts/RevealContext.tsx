@@ -32,7 +32,9 @@ function RevealContextProvider({ children }: RevealContextProviderProps) {
     });
 
     deckRef.current.initialize().then(() => {
-      (deckRef.current?.getPlugin("highlight") as any).hljs.highlightAll();
+      const hljs = (deckRef.current?.getPlugin("highlight") as any).hljs;
+      hljs.highlightAll();
+      hljs.initLineNumbersOnLoad()
     });
 
     return () => {
