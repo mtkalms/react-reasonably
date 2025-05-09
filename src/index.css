@@ -104,10 +104,14 @@ button:focus-visible {
   }
   .browser {
     .example {
+      div {
+        @apply flex items-center gap-2;
+      }
       button {
         @apply !text-[var(--highlight)] hover:!text-[var(--primary)] !font-bold;
         @apply outline-0 !border-2 !border-[var(--highlight)] hover:!border-[var(--primary)];
-        @apply !bg-[var(--default)] ;
+        @apply !bg-[var(--default)];
+        @apply flex items-center justify-center gap-4;
       }
       input {
         @apply outline-0 border-b-2;

@@ -9,6 +9,9 @@ import InteractiveExampleConstants from "./examples/InteractiveExampleConstants"
 import exampleUseRefCode from "./examples/example-useRef?raw"
 import ExampleUseRef from "./examples/example-useRef"
 
+import exampleUseStateCode from "./examples/example-useState?raw"
+import ExampleUseState from "./examples/example-useState"
+
 const CHAPTER = "State Management"
 const TAGLINE = "Persist, if you must!"
 const SECTION = [
@@ -55,7 +58,7 @@ function StateManagementChapter() {
     <Section chapter={CHAPTER} section="useRef">
       <TextBlock>
         <ul>
-          <li>Persists values over renders</li>
+          <li>Stores value over renders</li>
           <li>Resets on every <em>mount</em></li>
           <li><em>Non-reactive:</em> does not trigger re-render</li>
           <li>Used to reference <em>HTML elements</em> or as <em>instance variable</em></li>
@@ -71,8 +74,32 @@ function StateManagementChapter() {
       </div>
     </Section>
     <Section chapter={CHAPTER} section="useState">
+      <TextBlock>
+        <ul>
+          <li>Stores value over renders</li>
+          <li>Resets on every <em>mount</em></li>
+          <li><em>Reactive:</em> triggers re-render when changed</li>
+          <li>Used for primitives, lists and simple objects</li>
+        </ul>
+      </TextBlock>
+      <div className="flex flex-col gap-4">
+        <Browser>
+          <ExampleUseState/>
+        </Browser>
+        <CodeBlock>
+          {exampleUseStateCode}
+        </CodeBlock>
+      </div>
     </Section>
     <Section chapter={CHAPTER} section="useReducer">
+      <TextBlock>
+        <ul>
+          <li>Stores value over renders</li>
+          <li>Resets on every <em>mount</em></li>
+          <li><em>Reactive:</em> triggers re-render when changed</li>
+          <li>Used for complex containers, transitions and conditional updates</li>
+        </ul>
+      </TextBlock>
     </Section>
     <Section chapter={CHAPTER} section={"useContext"}>
     </Section>
