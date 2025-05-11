@@ -107,7 +107,7 @@ function StateManagementChapter() {
         <Browser>
           <InteractiveExampleUseReducer/>
         </Browser>
-        <CodeBlock>
+        <CodeBlock lineNumbers="9-24,27,32-36">
           {exampleUseReducerCode}
         </CodeBlock>
       </div>

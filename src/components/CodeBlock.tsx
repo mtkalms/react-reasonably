@@ -2,7 +2,7 @@ import { RevealContext } from "@/contexts/RevealContext";
 import { useContext, useEffect, useRef } from "react";
 
 interface CodeBlockProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-  lineNumbers?: string
+  lineNumbers?: string | boolean
   lineNumberStart?: number
   language?: string
 }
