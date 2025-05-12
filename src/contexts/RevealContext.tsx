@@ -2,9 +2,14 @@ import { createContext, useEffect, useRef, type RefObject } from "react";
 import Reveal from "reveal.js";
 import Highlight from "reveal.js/plugin/highlight/highlight";
 
+interface HighlightPlugin {
+  highlightBlock: (block: Element) => void;
+}
+
 interface RevealContextApi {
   deckDivRef: RefObject<HTMLDivElement | null>;
   deckRef: RefObject<Reveal.Api | null>;
+  highlightBlock: (block: Element) => void | null;
 }
 
 interface RevealContextProviderProps {
@@ -16,6 +21,13 @@ const RevealContext = createContext<RevealContextApi | undefined>(undefined);
 function RevealContextProvider({ children }: RevealContextProviderProps) {
   const deckDivRef = useRef<HTMLDivElement>(null); // reference to deck container div
   const deckRef = useRef<Reveal.Api>(null); // reference to deck reveal instance
+
+  function highlightBlock(elem: Element): void {
+    const highlightPlugin: HighlightPlugin = deckRef.current?.getPlugin(
+      "highlight",
+    ) as unknown as HighlightPlugin;
+    highlightPlugin?.highlightBlock(elem);
+  }
 
   useEffect(() => {
     // Prevents double initialization in strict mode
@@ -32,10 +44,8 @@ function RevealContextProvider({ children }: RevealContextProviderProps) {
     });
 
     deckRef.current.initialize().then(() => {
-      const highlight = deckRef.current?.getPlugin("highlight") as any;
       document.querySelectorAll(".code-block").forEach((elem) => {
-        if (!elem.getAttribute("data-highlighted"))
-          highlight.highlightBlock(elem);
+        if (!elem.getAttribute("data-highlighted")) highlightBlock(elem);
       });
     });
 
@@ -45,7 +55,7 @@ function RevealContextProvider({ children }: RevealContextProviderProps) {
           deckRef.current.destroy();
           deckRef.current = null;
         }
-      } catch (e) {
+      } catch {
         console.warn("Reveal.js destroy call failed.");
       }
     };
@@ -56,6 +66,7 @@ function RevealContextProvider({ children }: RevealContextProviderProps) {
       value={{
         deckRef: deckRef,
         deckDivRef: deckDivRef,
+        highlightBlock: highlightBlock,
       }}
     >
       <div className="reveal" ref={deckDivRef}>

@@ -1,10 +1,9 @@
 import { IconInfoHexagon } from "@tabler/icons-react";
 
-interface MessageProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {}
+type MessageProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
 function Message({ children }: MessageProps) {
   return (

@@ -20,20 +20,14 @@ function CodeBlock({
 }: CodeBlockProps) {
   const code = useRef<string>(null);
   const codeRef = useRef<HTMLDivElement>(null);
-  const codeText = Array.isArray(children)
-    ? children.join("")
-    : (children as string);
   const reveal = useContext(RevealContext);
 
   useEffect(() => {
-    if (codeText === code.current) return;
-    code.current = codeText;
+    if (children?.toString() === code.current) return;
+    code.current = children?.toString() || "";
     codeRef.current?.setAttribute("data-highlighted", "");
-    const highlight: any = reveal?.deckRef.current?.getPlugin(
-      "highlight",
-    ) as any;
-    highlight?.highlightBlock(codeRef.current);
-  }, [children]);
+    reveal?.highlightBlock?.(codeRef.current as HTMLDivElement);
+  }, [children, reveal]);
 
   return (
     <div className="h-fit w-full rounded-xl border-3 border-[var(--contrast)] text-left shadow-xl">
@@ -45,7 +39,7 @@ function CodeBlock({
           className={`language-${language} code-block overvlow-visible !max-h-none !bg-transparent !font-mono text-[12pt] leading-[1.25]`}
           {...props}
         >
-          {Array.isArray(children) ? children.join("") : children}
+          {children?.toString()}
         </code>
       </pre>
     </div>

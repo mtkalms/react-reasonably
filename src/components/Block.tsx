@@ -1,8 +1,7 @@
-interface TextBlockProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {}
+type TextBlockProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
 function TextBlock({ children, ...props }: TextBlockProps) {
   return (
