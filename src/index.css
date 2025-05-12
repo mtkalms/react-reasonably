@@ -70,27 +70,28 @@ button:focus-visible {
 }
 
 @theme {
-  --primary: #FAD000;
-  --default: #1E1E3F;
+  --primary: #fad000;
+  --default: #1e1e3f;
   --contrast: #191830;
-  --highlight: #A599E9;
-  --terminal-background: #1E1E3F;
-  --terminal-foreground: #FFFFFF;
+  --highlight: #a599e9;
+  --terminal-background: #1e1e3f;
+  --terminal-foreground: #ffffff;
   --terminal-black: #000000;
-  --terminal-red: #EC3A37F5;
-  --terminal-green: #3AD900;
-  --terminal-yellow: #FAD000;
+  --terminal-red: #ec3a37f5;
+  --terminal-green: #3ad900;
+  --terminal-yellow: #fad000;
   --terminal-blue: #7857fe;
-  --terminal-magenta: #FF2C70;
-  --terminal-cyan: #80FCFF;
-  --terminal-white: #FFFFFF;
-} 
+  --terminal-magenta: #ff2c70;
+  --terminal-cyan: #80fcff;
+  --terminal-white: #ffffff;
+}
 
 @layer components {
   .caption {
     font-size: 24pt;
   }
-  b, em {
+  b,
+  em {
     @apply text-[var(--primary)];
   }
   ul {
@@ -106,24 +107,24 @@ button:focus-visible {
     .example {
       @apply text-left;
       h1 {
-        @apply !text-[var(--primary)] !m-0 !p-0 !text-xl;
+        @apply !m-0 !p-0 !text-xl !text-[var(--primary)];
       }
       span {
         @apply flex items-center gap-2;
       }
       button {
-        @apply !text-[var(--highlight)] hover:!text-[var(--primary)] !font-bold;
-        @apply outline-0 !border-2 !border-[var(--highlight)] hover:!border-[var(--primary)];
+        @apply !font-bold !text-[var(--highlight)] hover:!text-[var(--primary)];
+        @apply !border-2 !border-[var(--highlight)] outline-0 hover:!border-[var(--primary)];
         @apply !bg-[var(--default)];
         @apply flex items-center justify-center gap-4;
       }
       input {
-        @apply outline-0 border-b-2;
+        @apply border-b-2 outline-0;
         @apply pb-0.25;
         @apply border-b-[var(--highlight)] hover:border-[var(--primary)] focus:border-[var(--primary)];
       }
       footer {
-        @apply max-w-3xs mt-5 text-left;
+        @apply mt-5 max-w-3xs text-left;
       }
       form {
         @apply max-w-3xs;

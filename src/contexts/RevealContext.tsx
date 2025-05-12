@@ -32,9 +32,10 @@ function RevealContextProvider({ children }: RevealContextProviderProps) {
     });
 
     deckRef.current.initialize().then(() => {
-      const highlight = (deckRef.current?.getPlugin("highlight") as any);
-      document.querySelectorAll('.code-block').forEach((elem) => {
-        if (!elem.getAttribute('data-highlighted')) highlight.highlightBlock(elem);
+      const highlight = deckRef.current?.getPlugin("highlight") as any;
+      document.querySelectorAll(".code-block").forEach((elem) => {
+        if (!elem.getAttribute("data-highlighted"))
+          highlight.highlightBlock(elem);
       });
     });
 

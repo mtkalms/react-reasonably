@@ -10,7 +10,7 @@ import PerformanceChapter from "./chapters/performance";
 
 function App() {
   return (
-    <div className="absolute h-full w-full inset-0">
+    <div className="absolute inset-0 h-full w-full">
       <RevealContextProvider>
         <div className="slides">
           <Title
