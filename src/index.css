@@ -31,7 +31,7 @@
   }
   b,
   em {
-    @apply text-[var(--primary)];
+    @apply text-(--primary);
   }
   ul {
     li {
@@ -46,21 +46,26 @@
     .example {
       @apply text-left;
       h1 {
-        @apply !m-0 !p-0 !text-xl !text-[var(--primary)];
+        @apply !m-0 !p-0 !text-xl !text-(--primary);
       }
       span {
         @apply flex items-center gap-2;
       }
       button {
-        @apply !font-bold !text-[var(--highlight)] hover:!text-[var(--primary)];
-        @apply !border-2 !border-[var(--highlight)] outline-0 hover:!border-[var(--primary)];
-        @apply !bg-[var(--default)];
+        @apply !font-bold !text-(--highlight) hover:!text-(--primary);
+        @apply !border-2 !border-(--highlight) outline-0 hover:!border-(--primary);
+        @apply !bg-(--default);
+        @apply rounded-lg p-2;
         @apply flex items-center justify-center gap-4;
+        svg {
+          width: 1em;
+          height: 1em;
+        }
       }
       input {
         @apply border-b-2 outline-0;
         @apply pb-0.25;
-        @apply border-b-[var(--highlight)] hover:border-[var(--primary)] focus:border-[var(--primary)];
+        @apply border-b-(--highlight) hover:border-(--primary) focus:border-(--primary);
       }
       footer {
         @apply mt-5 max-w-3xs text-left;

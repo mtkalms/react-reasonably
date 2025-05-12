@@ -15,10 +15,8 @@ function Title({ title, subtitle, ...props }: TitleProps) {
       {...props}
     >
       <div className="flex h-full w-full flex-col items-center justify-center gap-4">
-        <span className="text-9xl font-semibold text-[var(--primary)]">
-          {title}
-        </span>
-        <span className="text-[var(--highlight)]">{subtitle}</span>
+        <span className="text-9xl font-semibold text-(--primary)">{title}</span>
+        <span className="text-(--highlight)">{subtitle}</span>
       </div>
     </section>
   );

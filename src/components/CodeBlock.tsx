@@ -30,13 +30,13 @@ function CodeBlock({
   }, [children, reveal]);
 
   return (
-    <div className="h-fit w-full rounded-xl border-3 border-[var(--contrast)] text-left shadow-xl">
+    <div className="h-fit w-full rounded-xl border-3 border-(--contrast) text-left shadow-xl">
       <pre className="!m-0 !w-full p-5 !shadow-none">
         <code
           ref={codeRef}
           data-line-numbers={lineNumbers}
           data-ln-start-from={lineNumberStart?.toString() || ""}
-          className={`language-${language} code-block overvlow-visible !max-h-none !bg-transparent !font-mono text-[12pt] leading-[1.25]`}
+          className={`language-${language} code-block overvlow-visible !max-h-none !bg-transparent !font-mono text-[11pt] leading-[1.25]`}
           {...props}
         >
           {children?.toString()}

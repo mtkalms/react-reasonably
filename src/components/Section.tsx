@@ -23,8 +23,8 @@ function Section({
     >
       {section && (
         <div className="absolut inset-0 flex gap-4">
-          <span className="font-bold text-[var(--primary)]">{chapter}</span>
-          <span className="font-bold text-[var(--primary)]">|</span>
+          <span className="font-bold text-(--primary)">{chapter}</span>
+          <span className="font-bold text-(--primary)">|</span>
           <span>{section}</span>
         </div>
       )}
@@ -35,16 +35,16 @@ function Section({
           <>
             {chapter && (
               <div className="flex h-full w-full flex-col items-center justify-center gap-4">
-                <span className="text-8xl font-bold text-[var(--primary)]">
+                <span className="text-8xl font-bold text-(--primary)">
                   {chapter}
                 </span>
-                <span className="font-semibold text-[var(--highlight)]">
+                <span className="font-semibold text-(--highlight)">
                   {tagline}
                 </span>
               </div>
             )}
             <div
-              className={`w-full ${chapter ? "border-l-4 border-l-[var(--primary)]" : ""} px-15 py-20 text-left`}
+              className={`w-full ${chapter ? "border-l-4 border-l-(--primary)" : ""} px-15 py-20 text-left`}
             >
               {children}
             </div>

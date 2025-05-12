@@ -20,7 +20,7 @@ function ExampleUseState() {
       <button type="button" onClick={handleDecrease}>
         <IconMinus/>
       </button>
-      <span className="text-2xl"><b>Count: {count}</b></span>
+      <span><b>Count: {count}</b></span>
     </span>
   );
 }
