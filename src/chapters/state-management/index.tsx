@@ -32,8 +32,8 @@ function StateManagementChapter() {
       <Section chapter={CHAPTER} tagline={TAGLINE} />
       <Section chapter={CHAPTER} tagline={TAGLINE}>
         <ul>
-          {SECTION.map((section) => (
-            <li>{section}</li>
+          {SECTION.map((section, idx) => (
+            <li key={idx}>{section}</li>
           ))}
         </ul>
       </Section>

@@ -31,7 +31,7 @@ function ExampleUseReducer({initial}: {initial: Todo[]}) {
       <span key={todo.id}>
         <input type="checkbox" 
           checked={todo.complete} 
-          onClick={() => dispatch({
+          onChange={() => dispatch({
             type: todo.complete ? 'UNDO' : 'DO', ...todo
           })}/>
         <label>{todo.task}</label>
