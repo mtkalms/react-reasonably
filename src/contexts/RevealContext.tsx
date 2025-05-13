@@ -37,7 +37,7 @@ function RevealContextProvider({ children }: RevealContextProviderProps) {
       highlight: {
         highlightOnLoad: false,
       },
-      transition: "slide",
+      slideNumber: true,
       plugins: [Highlight],
       width: 1920,
       height: 1080,
