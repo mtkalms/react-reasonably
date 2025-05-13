@@ -42,6 +42,11 @@
       @apply animate-pulse !not-italic;
     }
   }
+  code {
+    table {
+      margin-left: 0px !important;
+    }
+  }
   .browser {
     .example {
       @apply text-left;
