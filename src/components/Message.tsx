@@ -1,23 +1,55 @@
-import { IconInfoHexagon } from "@tabler/icons-react";
+import { IconAlertHexagon, IconInfoHexagon, IconRadioactive, type IconProps } from "@tabler/icons-react";
 
-type MessageProps = React.DetailedHTMLProps<
+type MessageType = "info" | "warning" | "antipattern";
+interface MessageProps extends React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
->;
+> {
+  type: MessageType
+};
 
-function Message({ children }: MessageProps) {
+interface MessageIconProps extends IconProps {
+  type: MessageType
+};
+
+function MessageIcon({ type = "info", ...props }: MessageIconProps) {
+  switch (type) {
+    case "info": return <IconInfoHexagon {...props} />;
+    case "warning": return <IconAlertHexagon {...props} />;
+    case "antipattern": return <IconRadioactive {...props} />;
+    default: return;
+  }
+}
+
+function Message({
+  className,
+  children,
+  type,
+  ...props
+}: MessageProps) {
   return (
-    <div className="mt-15 flex w-4xl items-stretch overflow-hidden rounded-xl border-4 border-(--highlight)">
-      <div className="flex items-center bg-(--highlight)">
-        <IconInfoHexagon className="m-5 h-12 w-12 stroke-(--contrast)" />
-      </div>
-      <div className="flex w-full flex-col">
-        <span className="px-8 py-5 text-[18pt] text-(--highlight)">
+    <div className={`w-full rounded-xl border-2 shadow-xl text-(--${type === "info" ? "highlight" : "primary"}) border-(--${type === "info" ? "highlight" : "primary"}) ${className}`} {...props}>
+      <div className="flex items-stretch overflow-hidden">
+        <div className="flex items-center justify-center w-20">
+          <MessageIcon type={type} size={36} />
+        </div>
+        <span className=" py-5 text-[18pt]">
           {children}
         </span>
       </div>
-    </div>
+    </div >
   );
 }
 
+function MessageContainer(props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
+  return <div className={`ml-10 w-1/2 absolute bottom-10 flex flex-col gap-4 ${props.className}`} {...props}>
+    {props.children}
+  </div>
+}
+
+Message.Container = MessageContainer;
+
 export default Message;
+export { MessageContainer };
+
+

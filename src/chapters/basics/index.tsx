@@ -9,6 +9,7 @@ import destructuring from "./examples/example-destructuring?raw";
 import initializer from "./examples/example-initializer?raw";
 import evaluation from "./examples/example-evaluation?raw";
 import ExampleUseEffect from "./examples/example-useEffect?raw";
+import Message from "@/components/Message";
 
 const CHAPTER = "React Basics";
 
@@ -72,39 +73,53 @@ function BasicsChapter() {
           <Browser>
             <Example onSubmit={() => { }} />
           </Browser>
-          <CodeBlock lineNumbers="19-36">{ExampleRaw}</CodeBlock>
+          <CodeBlock lineNumbers="17-34">{ExampleRaw}</CodeBlock>
         </div>
       </Section>
-      <Section chapter={CHAPTER} section="Components">
-        <TextBlock>
-          <ul>
-            <li>
-              <b>Functional Component:</b> defined by a render function
-            </li>
-            <ul>
-              <li>Returns JSX to be rendered</li>
-              <li>Gets called when props or state change</li>
-              <li>
-                <b>Always call components from JSX JSX, never as functions!</b>
-              </li>
-            </ul>
-            <li>
-              <b>Props:</b> attributes of the component passed down from parent
-            </li>
-            <li>
-              <b>Hook:</b> Reusable component logic
-            </li>
-            <li>
-              <b>State:</b> component state is managed using the useState hook
-            </li>
-          </ul>
-        </TextBlock>
-
-        <div className="flex flex-col gap-4">
-          <CodeBlock lineNumbers="5-7">{ExampleUsage}</CodeBlock>
-          <CodeBlock lineNumbers="3-38">{ExampleRaw}</CodeBlock>
-        </div>
-      </Section>
+      <section>
+        {[
+          ["", "", "", false],
+          ["basics", "3-36", "5-7", false],
+          ["props", "3-7,13", "6", false],
+          ["state", "1,8-9,20-21,25-26", "5-7", false],
+          ["", "", "", true],
+        ].map(([point, highlightComponent, highlightParent, showMessages], idx) =>
+          <Section chapter={CHAPTER} key={idx} section="Components">
+            <TextBlock>
+              <ul>
+                <li className={!point || point === "basics" ? "" : "brightness-50"}>
+                  <b>Functional Component:</b> defined by a render function
+                  <ul>
+                    <li>Returns JSX to be rendered</li>
+                    <li>Gets called at least on every (props or state) change</li>
+                    <li>Everything in function body gets recreated on every render</li>
+                  </ul>
+                </li>
+                <li className={!point || point === "props" ? "" : "brightness-50"}>
+                  <b>Props:</b> attributes of the component passed down from parent
+                </li>
+                <li className={!point || point === "state" ? "" : "brightness-50"}>
+                  <b>Hook:</b> Reusable component logic
+                </li>
+                <li className={!point || point === "state" ? "" : "brightness-50"}>
+                  <b>State:</b> component state is managed using the useState hook
+                </li>
+              </ul>
+              {showMessages &&
+                <Message.Container>
+                  <Message type="antipattern">
+                    Always call components from JSX, never as functions!
+                  </Message>
+                </Message.Container>
+              }
+            </TextBlock>
+            <div className="flex flex-col gap-4">
+              <CodeBlock lineNumbers={highlightParent}>{ExampleUsage}</CodeBlock>
+              <CodeBlock lineNumbers={highlightComponent}>{ExampleRaw}</CodeBlock>
+            </div>
+          </Section>
+        )}
+      </section >
       <Section chapter={CHAPTER} section="Component Lifecycle">
         <TextBlock>
           <ul>

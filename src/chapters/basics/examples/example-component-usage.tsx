@@ -1,10 +1,10 @@
 import ExampleComponent from "./example-component";
 
-function ExampleComponentParent () {
+function ExampleComponentParent() {
   return <>
-    <h1>Login</h1>
-    Please enter crendetials:
-    <ExampleComponent onSubmit={(name,) => console.log(name)}/>
+    <ExampleComponent
+      onSubmit={(name,) => console.log(name)}
+    />
   </>
 }
 

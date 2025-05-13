@@ -1,3 +1,5 @@
+import TextBlock from "@/components/Block";
+import Message from "@/components/Message";
 import Section from "@components/Section";
 
 const CHAPTER = "Custom Components";
@@ -14,6 +16,15 @@ function CustomComponentsChapter() {
           <li>Uncontrolled Components</li>
           <li>Higher Order Components (HOC)</li>
         </ul>
+      </Section>
+      <Section chapter={CHAPTER} section="Composition" >
+        <TextBlock>
+          <Message.Container>
+            <Message type="antipattern">
+              Never nest functional components!
+            </Message>
+          </Message.Container>
+        </TextBlock>
       </Section>
     </>
   );
