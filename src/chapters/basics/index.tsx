@@ -70,7 +70,7 @@ function BasicsChapter() {
         </TextBlock>
         <div className="flex flex-col gap-4">
           <Browser>
-            <Example onSubmit={() => {}} />
+            <Example onSubmit={() => { }} />
           </Browser>
           <CodeBlock lineNumbers="19-36">{ExampleRaw}</CodeBlock>
         </div>
@@ -133,17 +133,17 @@ function BasicsChapter() {
       <Section chapter={CHAPTER} section="Component State"></Section>
       <Section chapter={CHAPTER} section="Component Effects">
         <TextBlock>
-          <div className="w-xl p-5">
-            <CodeBlock className="text-2xl">
-              useEffect(setup, dependencies)
+          <div className="w-3xl p-5">
+            <CodeBlock inline>
+              {"useEffect(setup, dependencies)"}
             </CodeBlock>
           </div>
           <ul>
             <li>
-              Setup runs on mount and every re-render with changed dependencies
+              <b>Setup</b> runs on mount and every re-render with changed dependencies
             </li>
-            <li>Setup can provide cleanup funtion as return</li>
-            <li>Cleanup runs before setup on re-render and on unmount</li>
+            <li><b>Setup</b> can provide a <b>cleanup</b> funtion by returning it</li>
+            <li><b>Cleanup</b> runs before setup on re-render and on unmount</li>
             <li>
               All props and states used in useEffect should be listed as
               dependencies

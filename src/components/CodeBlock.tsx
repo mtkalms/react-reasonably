@@ -9,6 +9,7 @@ interface CodeBlockProps
   lineNumbers?: string | boolean;
   lineNumberStart?: number;
   language?: string;
+  inline?: boolean;
 }
 
 function CodeBlock({
@@ -16,6 +17,8 @@ function CodeBlock({
   lineNumbers,
   lineNumberStart,
   language = "typescript",
+  inline,
+  className,
   ...props
 }: CodeBlockProps) {
   const code = useRef<string>(null);
@@ -30,13 +33,13 @@ function CodeBlock({
   }, [children, reveal]);
 
   return (
-    <div className="h-fit w-full rounded-xl border-3 border-(--contrast) text-left shadow-xl">
+    <div className={`h-fit w-full rounded-xl ${inline ? "bg-(--contrast) !text-2xl" : "border-3 border-(--contrast) shadow-xl"} text-left ${className}`}>
       <pre className="!m-0 !w-full p-5 !shadow-none">
         <code
           ref={codeRef}
           data-line-numbers={lineNumbers}
           data-ln-start-from={lineNumberStart?.toString() || ""}
-          className={`language-${language} code-block overvlow-visible !max-h-none !bg-transparent !font-mono text-[11pt] leading-[1.25]`}
+          className={`language-${language} code-block overvlow-visible !max-h-none !bg-transparent !font-mono leading-[1.25] ${inline ? "text-4xl" : "text-[11pt]"}`}
           {...props}
         >
           {children?.toString()}
