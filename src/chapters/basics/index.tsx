@@ -10,6 +10,7 @@ import initializer from "./examples/example-initializer?raw";
 import evaluation from "./examples/example-evaluation?raw";
 import ExampleUseEffect from "./examples/example-useEffect?raw";
 import Message from "@/components/Message";
+import List from "@/components/List";
 
 const CHAPTER = "React Basics";
 
@@ -44,38 +45,54 @@ function BasicsChapter() {
           </ul>
         </TextBlock>
       </Section>
-      <Section chapter={CHAPTER} section="JSX">
-        <TextBlock>
-          <ul>
-            <li>
-              JavaScript syntax extension for <b>{"<html>"}</b> like markup
-            </li>
-            <li>
-              All attributes are in <b>camelCase</b> (class is <b>className</b>)
-            </li>
-            <li>Must always have exactly on root element</li>
-            <li>
-              <b>{"<>"}</b> Fragments can be used as virtual root <b>{"</>"}</b>
-            </li>
-            <li>
-              <b>{"{"}</b> JavaScript in curly braces (one-liners only){" "}
-              <b>{"}"}</b>
-            </li>
-            <li>
-              Custom components <b>{"<ExampleJSX/>"}</b>
-            </li>
-            <li>
-              All elements created in a loop need a unique <b>key</b> attribute
-            </li>
-          </ul>
-        </TextBlock>
-        <div className="flex flex-col gap-4">
-          <Browser>
-            <Example onSubmit={() => { }} />
-          </Browser>
-          <CodeBlock lineNumbers="17-34">{ExampleRaw}</CodeBlock>
-        </div>
-      </Section>
+      <section>
+        {[
+          ["", "17-34"],
+          ["camelCase", "21,26"],
+          ["fragment", "17,34"],
+          ["inline", "32"],
+          ["custom", "3-36"],
+          ["", "17-34"],
+        ].map(([step, highlight], idx) =>
+          <Section chapter={CHAPTER} section="JSX" key={idx}>
+            <TextBlock>
+              <List active={step as string}>
+                <List.Step>
+                  JavaScript syntax extension for <b>{"<html>"}</b> like markup
+                </List.Step>
+                <List.Step step="camelCase">
+                  All attributes are in <b>camelCase</b> (class is <b>className</b>)
+                </List.Step>
+                <List.Step step="fragment">
+                  Must always have exactly on root element
+                </List.Step>
+                <List.Step step="fragment">
+                  <b>{"<>"}</b> Fragments can be used as virtual root <b>{"</>"}</b>
+                </List.Step>
+                <List.Step step="inline">
+                  <b>{"{"}</b> JavaScript in curly braces (one-liners only){" "}
+                  <b>{"}"}</b>
+                </List.Step>
+                <List.Step step="custom">
+                  Custom components <b>{"<ExampleJSX/>"}</b>
+                </List.Step>
+                <List.Step>
+                  All elements created in a loop need a unique <b>key</b> attribute
+                </List.Step>
+              </List>
+            </TextBlock>
+            <div className="flex flex-col gap-4">
+              {step === "custom" ?
+                <CodeBlock lineNumbers="6">{ExampleUsage}</CodeBlock> :
+                <Browser>
+                  <Example onSubmit={() => { }} />
+                </Browser>
+              }
+              <CodeBlock lineNumbers={highlight}>{ExampleRaw}</CodeBlock>
+            </div>
+          </Section>
+        )}
+      </section>
       <section>
         {[
           ["", "", "", false],
@@ -83,28 +100,28 @@ function BasicsChapter() {
           ["props", "3-7,13", "6", false],
           ["state", "1,8-9,20-21,25-26", "5-7", false],
           ["", "", "", true],
-        ].map(([point, highlightComponent, highlightParent, showMessages], idx) =>
+        ].map(([step, highlightComponent, highlightParent, showMessages], idx) =>
           <Section chapter={CHAPTER} key={idx} section="Components">
             <TextBlock>
-              <ul>
-                <li className={!point || point === "basics" ? "" : "brightness-50"}>
+              <List active={step as string}>
+                <List.Step step="basics">
                   <b>Functional Component:</b> defined by a render function
                   <ul>
                     <li>Returns JSX to be rendered</li>
                     <li>Gets called at least on every (props or state) change</li>
                     <li>Everything in function body gets recreated on every render</li>
                   </ul>
-                </li>
-                <li className={!point || point === "props" ? "" : "brightness-50"}>
+                </List.Step>
+                <List.Step step="props">
                   <b>Props:</b> attributes of the component passed down from parent
-                </li>
-                <li className={!point || point === "state" ? "" : "brightness-50"}>
+                </List.Step>
+                <List.Step step="state">
                   <b>Hook:</b> Reusable component logic
-                </li>
-                <li className={!point || point === "state" ? "" : "brightness-50"}>
+                </List.Step>
+                <List.Step step="state">
                   <b>State:</b> component state is managed using the useState hook
-                </li>
-              </ul>
+                </List.Step>
+              </List>
               {showMessages &&
                 <Message.Container>
                   <Message type="antipattern">
