@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 interface SectionProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLElement>,
@@ -44,7 +46,10 @@ function Section({
               </div>
             )}
             <div
-              className={`w-full ${chapter ? "border-l-4 border-l-(--primary)" : ""} px-15 py-20 text-left`}
+              className={clsx(
+                "w-full px-15 py-20 text-left",
+                chapter && "border-l-4 border-l-(--primary)",
+              )}
             >
               {children}
             </div>

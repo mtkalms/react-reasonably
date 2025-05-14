@@ -1,4 +1,5 @@
 import { RevealContext } from "@/contexts/RevealContext";
+import clsx from "clsx";
 import { useContext, useEffect, useRef } from "react";
 
 interface CodeBlockProps
@@ -33,13 +34,25 @@ function CodeBlock({
   }, [children, reveal]);
 
   return (
-    <div className={`h-fit w-full rounded-xl ${inline ? "bg-(--contrast) !text-2xl" : "border-3 border-(--contrast) shadow-xl"} text-left ${className}`}>
+    <div
+      className={clsx(
+        "h-fit w-full rounded-xl text-left",
+        inline
+          ? "bg-(--contrast) !text-2xl"
+          : "border-3 border-(--contrast) shadow-xl",
+        className,
+      )}
+    >
       <pre className="!m-0 !w-full p-5 !shadow-none">
         <code
           ref={codeRef}
           data-line-numbers={lineNumbers}
           data-ln-start-from={lineNumberStart?.toString() || ""}
-          className={`language-${language} code-block overvlow-visible !max-h-none !bg-transparent !font-mono leading-[1.25] ${inline ? "text-4xl" : "text-[11pt]"}`}
+          className={clsx(
+            `language-${language}`,
+            "code-block overvlow-visible !max-h-none !bg-transparent !font-mono leading-[1.25]",
+            inline ? "text-4xl" : "text-[11pt]",
+          )}
           {...props}
         >
           {children?.toString()}
