@@ -11,6 +11,7 @@ import evaluation from "./examples/example-evaluation?raw";
 import ExampleUseEffect from "./examples/example-useEffect?raw";
 import Message from "@/components/Message";
 import List from "@/components/List";
+import { IconLink } from "@tabler/icons-react";
 
 const CHAPTER = "React Basics";
 
@@ -53,7 +54,7 @@ function BasicsChapter() {
           ["inline", "32"],
           ["custom", "3-36"],
           ["", "17-34"],
-        ].map(([step, highlight], idx) =>
+        ].map(([step, highlight], idx) => (
           <Section chapter={CHAPTER} section="JSX" key={idx}>
             <TextBlock>
               <List active={step as string}>
@@ -61,13 +62,15 @@ function BasicsChapter() {
                   JavaScript syntax extension for <b>{"<html>"}</b> like markup
                 </List.Step>
                 <List.Step step="camelCase">
-                  All attributes are in <b>camelCase</b> (class is <b>className</b>)
+                  All attributes are in <b>camelCase</b> (class is{" "}
+                  <b>className</b>)
                 </List.Step>
                 <List.Step step="fragment">
                   Must always have exactly on root element
                 </List.Step>
                 <List.Step step="fragment">
-                  <b>{"<>"}</b> Fragments can be used as virtual root <b>{"</>"}</b>
+                  <b>{"<>"}</b> Fragments can be used as virtual root{" "}
+                  <b>{"</>"}</b>
                 </List.Step>
                 <List.Step step="inline">
                   <b>{"{"}</b> JavaScript in curly braces (one-liners only){" "}
@@ -77,21 +80,23 @@ function BasicsChapter() {
                   Custom components <b>{"<ExampleJSX/>"}</b>
                 </List.Step>
                 <List.Step>
-                  All elements created in a loop need a unique <b>key</b> attribute
+                  All elements created in a loop need a unique <b>key</b>{" "}
+                  attribute
                 </List.Step>
               </List>
             </TextBlock>
             <div className="flex flex-col gap-4">
-              {step === "custom" ?
-                <CodeBlock lineNumbers="6">{ExampleUsage}</CodeBlock> :
+              {step === "custom" ? (
+                <CodeBlock lineNumbers="6">{ExampleUsage}</CodeBlock>
+              ) : (
                 <Browser>
-                  <Example onSubmit={() => { }} />
+                  <Example onSubmit={() => {}} />
                 </Browser>
-              }
+              )}
               <CodeBlock lineNumbers={highlight}>{ExampleRaw}</CodeBlock>
             </div>
           </Section>
-        )}
+        ))}
       </section>
       <section>
         {[
@@ -100,43 +105,69 @@ function BasicsChapter() {
           ["props", "3-7,13", "6", false],
           ["state", "1,8-9,20-21,25-26", "5-7", false],
           ["", "", "", true],
-        ].map(([step, highlightComponent, highlightParent, showMessages], idx) =>
-          <Section chapter={CHAPTER} key={idx} section="Components">
-            <TextBlock>
-              <List active={step as string}>
-                <List.Step step="basics">
-                  <b>Functional Component:</b> defined by a render function
-                  <ul>
-                    <li>Returns JSX to be rendered</li>
-                    <li>Gets called at least on every (props or state) change</li>
-                    <li>Everything in function body gets recreated on every render</li>
-                  </ul>
-                </List.Step>
-                <List.Step step="props">
-                  <b>Props:</b> attributes of the component passed down from parent
-                </List.Step>
-                <List.Step step="state">
-                  <b>Hook:</b> Reusable component logic
-                </List.Step>
-                <List.Step step="state">
-                  <b>State:</b> component state is managed using the useState hook
-                </List.Step>
-              </List>
-              {showMessages &&
-                <Message.Container>
-                  <Message type="antipattern">
-                    Always call components from JSX, never as functions!
-                  </Message>
-                </Message.Container>
-              }
-            </TextBlock>
-            <div className="flex flex-col gap-4">
-              <CodeBlock lineNumbers={highlightParent}>{ExampleUsage}</CodeBlock>
-              <CodeBlock lineNumbers={highlightComponent}>{ExampleRaw}</CodeBlock>
-            </div>
-          </Section>
+        ].map(
+          ([step, highlightComponent, highlightParent, showMessages], idx) => (
+            <Section chapter={CHAPTER} key={idx} section="Components">
+              <TextBlock>
+                <List active={step as string}>
+                  <List.Step step="basics">
+                    <b>Functional Component:</b> defined by a render function
+                    <ul>
+                      <li>Returns JSX to be rendered</li>
+                      <li>
+                        Gets called at least on every (props or state) change
+                      </li>
+                      <li>
+                        Everything in function body gets recreated on every
+                        render
+                      </li>
+                    </ul>
+                  </List.Step>
+                  <List.Step step="props">
+                    <b>Props:</b> attributes of the component passed down from
+                    parent
+                  </List.Step>
+                  <List.Step step="state">
+                    <b>Hook:</b> Reusable component logic
+                  </List.Step>
+                  <List.Step step="state">
+                    <b>State:</b> component state is managed using the useState
+                    hook
+                  </List.Step>
+                </List>
+                {showMessages && (
+                  <Message.Container>
+                    <Message type="antipattern">
+                      <b>
+                        Always evoke components from JSX, never call them as
+                        functions!
+                      </b>
+                      <br />
+                      <a
+                        href="https://kentcdodds.com/blog/dont-call-a-react-function-component"
+                        target="_blank"
+                      >
+                        <span className="flex gap-2">
+                          <IconLink />
+                          Kent C. Dodds - Don't call a React function component
+                        </span>
+                      </a>
+                    </Message>
+                  </Message.Container>
+                )}
+              </TextBlock>
+              <div className="flex flex-col gap-4">
+                <CodeBlock lineNumbers={highlightParent}>
+                  {ExampleUsage}
+                </CodeBlock>
+                <CodeBlock lineNumbers={highlightComponent}>
+                  {ExampleRaw}
+                </CodeBlock>
+              </div>
+            </Section>
+          ),
         )}
-      </section >
+      </section>
       <Section chapter={CHAPTER} section="Component Lifecycle">
         <TextBlock>
           <ul>
@@ -163,29 +194,45 @@ function BasicsChapter() {
         <div className="flex flex-col gap-4"></div>
       </Section>
       <Section chapter={CHAPTER} section="Component State"></Section>
-      <Section chapter={CHAPTER} section="Component Effects">
-        <TextBlock>
-          <div className="w-3xl p-5">
-            <CodeBlock inline>
-              {"useEffect(setup, dependencies)"}
-            </CodeBlock>
-          </div>
-          <ul>
-            <li>
-              <b>Setup</b> runs on mount and every re-render with changed dependencies
-            </li>
-            <li><b>Setup</b> can provide a <b>cleanup</b> funtion by returning it</li>
-            <li><b>Cleanup</b> runs before setup on re-render and on unmount</li>
-            <li>
-              All props and states used in useEffect should be listed as
-              dependencies
-            </li>
-          </ul>
-        </TextBlock>
-        <div className="flex flex-col items-start gap-4">
-          <CodeBlock>{ExampleUseEffect}</CodeBlock>
-        </div>
-      </Section>
+      <section>
+        {[
+          ["", ""],
+          ["Setup", "11,15,22,26"],
+          ["Cleanup", "16-18"],
+          ["Dependencies", "23,27"],
+          ["", ""],
+        ].map(([step, lineNumbers]) => (
+          <Section chapter={CHAPTER} section="Component Effects">
+            <TextBlock>
+              <div className="w-3xl p-5">
+                <CodeBlock inline>{"useEffect(setup, dependencies)"}</CodeBlock>
+              </div>
+              <List active={step}>
+                <List.Step step="Setup">
+                  <b>Setup</b> runs on mount and every re-render with changed
+                  dependencies
+                </List.Step>
+                <List.Step step="Cleanup">
+                  <b>Setup</b> can provide a <b>cleanup</b> funtion by returning
+                  it
+                </List.Step>
+                <List.Step step="Cleanup">
+                  <b>Cleanup</b> runs before setup on re-render and on unmount
+                </List.Step>
+                <List.Step step="Dependencies">
+                  All props and states used in useEffect should be listed as
+                  dependencies
+                </List.Step>
+              </List>
+            </TextBlock>
+            <div className="flex flex-col items-start gap-4">
+              <CodeBlock lineNumbers={lineNumbers}>
+                {ExampleUseEffect}
+              </CodeBlock>
+            </div>
+          </Section>
+        ))}
+      </section>
       <Section chapter={CHAPTER} section="Common Typescript Patterns">
         <TextBlock>
           <ul>
