@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 interface ExampleProps {
-  title: string;
+  role: string;
 }
 
 function Example(props: ExampleProps) {
@@ -9,12 +9,13 @@ function Example(props: ExampleProps) {
 
   useEffect(() => {
     // runs on every re-render
+    console.log("Render");
   })
 
   useEffect(() => {
     // only runs once on mount
     const timerId = setInterval(() => {
-      console.log('Timer tick');
+      console.log('Tick');
     }, 1000);
 
     return () => {
@@ -25,15 +26,11 @@ function Example(props: ExampleProps) {
 
   useEffect(() => {
     // only runs when name changes
-    console.log(name);
-  }, [name])
-
-  useEffect(() => {
-    // only runs when props change
-    console.log(props.title);
-  }, [props])
+    console.log(props.role, name);
+  }, [name, props.role])
 
   return <div>
+    <h2>{props.role}</h2>
     <input
       type="text"
       value={name}

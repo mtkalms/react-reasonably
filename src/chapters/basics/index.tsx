@@ -15,6 +15,8 @@ import ExampleJSX from "./examples/example-jsx?raw";
 import InteractivExampleJSX from "./examples/InteractiveExampleJSX";
 import ExampleUseState from "./../state-management/examples/example-useState";
 import ExampleUseStateRaw from "./../state-management/examples/example-useState?raw";
+import LoginForm from "./examples/example-component";
+import { IconLogin } from "@tabler/icons-react";
 
 const CHAPTER = "React Basics";
 
@@ -25,7 +27,7 @@ function BasicsChapter() {
 
       <Section chapter={CHAPTER}>
         <ul>
-          <li>Why react?</li>
+          <li>Why React?</li>
           <li>JSX</li>
           <li>Components</li>
           <li>Component Lifecycle</li>
@@ -34,7 +36,7 @@ function BasicsChapter() {
           <li>Common TypeScript Patterns</li>
         </ul>
       </Section>
-      <Section chapter={CHAPTER} section="Why react?">
+      <Section chapter={CHAPTER} section="Why React?">
         <TextBlock>
           <ul>
             <li>Efficient DOM manipulation</li>
@@ -126,9 +128,9 @@ function BasicsChapter() {
       <section>
         {[
           ["", "", "", false],
-          ["basics", "3-36", "5-7", false],
-          ["props", "3-7,13", "6", false],
-          ["state", "1,8-9,20-21,25-26", "5-7", false],
+          ["basics", "3-35", "6-10", false],
+          ["props", "8,13,19", "7,9", false],
+          ["state", "1,9-10,13,22-23,27-28", "7", false],
           ["", "", "", true],
         ].map(
           ([step, highlightComponent, highlightParent, showMessages], idx) => (
@@ -151,6 +153,18 @@ function BasicsChapter() {
                   <List.Step step="props">
                     <b>Props:</b> attributes of the component passed down from
                     parent
+                    <ul>
+                      <li>
+                        <b>children:</b> refers to any thing between the tags
+                      </li>
+                      <li>
+                        <b>key:</b> unique identifier of a child element
+                        <ul>
+                          <li>can be passed to any component</li>
+                          <li>is not accessible from the component</li>
+                        </ul>
+                      </li>
+                    </ul>
                   </List.Step>
                   <List.Step step="state">
                     <b>Hook:</b> Reusable component logic
@@ -175,21 +189,33 @@ function BasicsChapter() {
                 )}
               </TextBlock>
               <div className="flex flex-col gap-4">
-                <CodeBlock lineNumbers={highlightParent}>
-                  {ExampleUsage}
-                </CodeBlock>
+                {(idx == 0)
+                  ? <Browser className="min-h-[312px]">
+                    <LoginForm>
+                      <div className="mb-5 border-b-2 border(--primary)">
+                        <IconLogin className="mx-1 -mt-[0.15lh] size-[0.9em] py-0 inline-block align-middle" />
+                        Login
+                      </div>
+                    </LoginForm>
+
+                  </Browser>
+                  : <CodeBlock lineNumbers={highlightParent}>
+                    {ExampleUsage}
+                  </CodeBlock>
+                }
                 <CodeBlock lineNumbers={highlightComponent}>
                   {ExampleRaw}
                 </CodeBlock>
               </div>
-            </Section>
+            </Section >
           ),
-        )}
-      </section>
+        )
+        }
+      </section >
       <Section chapter={CHAPTER} section="Component Lifecycle">
         <TextBlock>
           <ul>
-            <li>3 phases of component Lifecycle</li>
+            <li>3 phases of the component lifecycle</li>
             <ul>
               <li>
                 <b>Mount: </b>
@@ -217,9 +243,17 @@ function BasicsChapter() {
             <CodeBlock inline>{"useState<T>(initial: T): [T, (T) => void]"}</CodeBlock>
           </div>
           <List>
-            <List.Step>Returns a reference to the value and to a setter function</List.Step>
-            <List.Step><b>Persistance:</b> gets reset only when component remounts</List.Step>
-            <List.Step><b>Reactive:</b> component is re-rendered every time value changes</List.Step>
+            <List.Step>Returns a reference to the <b>value</b> and a <b>setter</b> function</List.Step>
+            <ul>
+              <List.Step>Both can be renamed in-place with <b>destructuring</b></List.Step>
+              <List.Step><b>Setter function</b> triggers asynchronous update</List.Step>
+              <List.Step><b>Setter function</b> also accepts update function</List.Step>
+            </ul>
+            <List.Step><b>Persistance:</b> resets only when component remounts</List.Step>
+            <List.Step><b>Reactive:</b> component re-renders when value changes</List.Step>
+            <ul>
+              <List.Step>Only performs shallow comparison</List.Step>
+            </ul>
           </List>
         </TextBlock>
         <div className="flex flex-col gap-4">

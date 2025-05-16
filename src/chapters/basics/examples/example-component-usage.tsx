@@ -1,11 +1,14 @@
-import ExampleComponent from "./example-component";
+import { IconLogin } from "@tabler/icons-react";
+import LoginForm from "./example-component";
 
-function ExampleComponentParent() {
-  return <>
-    <ExampleComponent
+function LoginPanel() {
+  return (
+    <LoginForm
       onSubmit={(name,) => console.log(name)}
-    />
-  </>
+    >
+      <IconLogin /> Login
+    </LoginForm>
+  )
 }
 
-export default ExampleComponentParent;
+export default LoginPanel;

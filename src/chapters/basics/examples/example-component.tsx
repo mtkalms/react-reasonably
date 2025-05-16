@@ -1,20 +1,22 @@
-import { useState } from "react"
+import { useState, type ReactNode, type MouseEvent } from "react"
 
-interface ExampleComponentProps {
-  onSubmit: (name: string, password: string) => void
+interface LoginFormProps {
+  onSubmit?: (name: string, password: string) => void;
+  children?: ReactNode;
 }
 
-function ExampleComponent(props: ExampleComponentProps) {
+function LoginForm(props: LoginFormProps) {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+  const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
     props.onSubmit?.(name, password);
+    event.preventDefault();
   }
 
   return (
-    <>
+    <div>
+      <h1>{props.children}</h1>
       <form>
         <input type="text"
           value={name}
@@ -28,11 +30,8 @@ function ExampleComponent(props: ExampleComponentProps) {
         />
         <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
-      <footer>
-        <b>Name:</b> {name ? name : "not provided"}
-      </footer>
-    </>
+    </div>
   )
 }
 
-export default ExampleComponent;
+export default LoginForm;
