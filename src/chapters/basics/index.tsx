@@ -189,7 +189,7 @@ function BasicsChapter() {
                 )}
               </TextBlock>
               <div className="flex flex-col gap-4">
-                {(idx == 0)
+                {(step === "")
                   ? <Browser className="min-h-[312px]">
                     <LoginForm>
                       <div className="mb-5 border-b-2 border(--primary)">

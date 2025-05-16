@@ -1,16 +1,16 @@
 import { useState, type ReactNode, type MouseEvent } from "react"
 
 interface LoginFormProps {
-  onSubmit?: (name: string, password: string) => void;
+  onSubmit?: (email: string, password: string) => void;
   children?: ReactNode;
 }
 
 function LoginForm(props: LoginFormProps) {
-  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
-    props.onSubmit?.(name, password);
+    props.onSubmit?.(email, password);
     event.preventDefault();
   }
 
@@ -18,10 +18,10 @@ function LoginForm(props: LoginFormProps) {
     <div>
       <h1>{props.children}</h1>
       <form>
-        <input type="text"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder="Name"
+        <input type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="Email"
         />
         <input type="password"
           value={password}

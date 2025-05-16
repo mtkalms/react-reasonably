@@ -14,6 +14,7 @@ function useUpdateAnimation() {
       }
     } else {
       didMount.current = true;
+      setClassName("p-4 rounded-lg w-fit");
     }
   });
 
