@@ -5,7 +5,7 @@ function InteractiveExampleJSX() {
     { id: "t0", task: "JSX", done: true },
     { id: "t1", task: "Functional components" },
     { id: "t2", task: "State management" },
-    { id: "t2", task: "Hooks" },
+    { id: "t3", task: "Hooks" },
   ]} title="React Reasonably" />
 }
 
