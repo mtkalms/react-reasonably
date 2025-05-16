@@ -9,16 +9,18 @@ function ExampleUseState() {
   };
 
   const handleDecrease = () => {
-    setCount(count - 1);
+    if (count > 0) {
+      setCount(count - 1);
+    }
   };
 
   return (
     <span>
       <button type="button" onClick={handleIncrease}>
-        <IconPlus/>
+        <IconPlus />
       </button>
       <button type="button" onClick={handleDecrease}>
-        <IconMinus/>
+        <IconMinus />
       </button>
       <span><b>Count: {count}</b></span>
     </span>

@@ -21,18 +21,18 @@ function App() {
             <div>
               <ul>
                 <li>React Basics</li>
-                <li>State Managenment</li>
                 <li>Custom Components</li>
                 <li>Custom Hooks</li>
+                <li>State Managenment</li>
                 <li>Refactoring</li>
                 <li>Performance</li>
               </ul>
             </div>
           </Section>
           <BasicsChapter />
-          <StateManagementChapter />
           <CustomComponentsChapter />
           <CustomHooksChapter />
+          <StateManagementChapter />
           <RefactoringChapter />
           <PerformanceChapter />
         </div>

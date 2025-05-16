@@ -4,14 +4,17 @@ import Section from "@components/Section";
 import Browser from "@components/Browser";
 import ExampleRaw from "./examples/example-component?raw";
 import ExampleUsage from "./examples/example-component-usage?raw";
-import Example from "./examples/example-component";
 import destructuring from "./examples/example-destructuring?raw";
 import initializer from "./examples/example-initializer?raw";
 import evaluation from "./examples/example-evaluation?raw";
 import ExampleUseEffect from "./examples/example-useEffect?raw";
 import Message from "@/components/Message";
 import List from "@/components/List";
-import { IconLink } from "@tabler/icons-react";
+import Link from "@/components/Link";
+import ExampleJSX from "./examples/example-jsx?raw";
+import InteractivExampleJSX from "./examples/InteractiveExampleJSX";
+import ExampleUseState from "./../state-management/examples/example-useState";
+import ExampleUseStateRaw from "./../state-management/examples/example-useState?raw";
 
 const CHAPTER = "React Basics";
 
@@ -22,7 +25,7 @@ function BasicsChapter() {
 
       <Section chapter={CHAPTER}>
         <ul>
-          <li>Core Concepts</li>
+          <li>Why react?</li>
           <li>JSX</li>
           <li>Components</li>
           <li>Component Lifecycle</li>
@@ -31,69 +34,91 @@ function BasicsChapter() {
           <li>Common TypeScript Patterns</li>
         </ul>
       </Section>
-      <Section chapter={CHAPTER} section="Core Concepts">
+      <Section chapter={CHAPTER} section="Why react?">
         <TextBlock>
           <ul>
-            <li>React handles rendering and updating of UI</li>
-            <li>
-              <b>Virtual DOM:</b> virtual copy of real DOM
-            </li>
-            <li>Content is added to and mainpultaed in the virtual DOM</li>
-            <li>React decides when which part of the UI gets updated</li>
-            <li>
-              <b>Reconciliation:</b> Virtual DOM is synced with with real DOM
-            </li>
+            <li>Efficient DOM manipulation</li>
+            <ul>
+              <li>
+                <b>Virtual DOM:</b> virtual copy of real DOM
+              </li>
+              <li>Content is added to or updated in the virtual DOM</li>
+              <li>
+                <b>Reconciliation:</b> Virtual DOM is synced with with real DOM
+              </li>
+            </ul>
+            <li>Markup and component-based architecture</li>
+            <ul>
+              <li><b>JSX:</b> Javascript language extension for <b>{"<html/>"}</b>-like markup</li>
+              <li>Custom components that work like regular HTML element tags</li>
+            </ul>
+            <li>Extensive community and ecosystem</li>
+            <ul>
+              <li>React is currently by far the most popular web framework</li>
+              <li>Countless well-maintained plugins, libraries and platforms</li>
+            </ul>
           </ul>
         </TextBlock>
       </Section>
       <section>
         {[
-          ["", "17-34"],
-          ["camelCase", "21,26"],
-          ["fragment", "17,34"],
-          ["inline", "32"],
-          ["custom", "3-36"],
-          ["", "17-34"],
+          ["", ""],
+          ["", "19-22,28-39"],
+          ["camelCase", "19"],
+          ["closed", "20,30,38"],
+          ["root", "19,22"],
+          ["fragment", "28,39"],
+          ["inline", "20,21,31-37"],
+          ["custom", "32-36"],
+          ["key", "35, 31,37"],
+          ["", ""],
         ].map(([step, highlight], idx) => (
           <Section chapter={CHAPTER} section="JSX" key={idx}>
             <TextBlock>
+              <p><b>Rules of JSX</b></p>
               <List active={step as string}>
-                <List.Step>
-                  JavaScript syntax extension for <b>{"<html>"}</b> like markup
+                <List.Step step="camelCase">
+                  Use <b>camelCase</b> for all HTML attributes
                 </List.Step>
                 <List.Step step="camelCase">
-                  All attributes are in <b>camelCase</b> (class is{" "}
-                  <b>className</b>)
+                  class ↝ <b>className</b> (reserved word in JS)
+                </List.Step>
+                <List.Step step="closed">
+                  <b>{"<em> "}</b>
+                  Close all element tags
+                  <b>{" </em>"}</b>
+                </List.Step>
+                <List.Step step="root">
+                  Always return exactly <b>one</b> root element
                 </List.Step>
                 <List.Step step="fragment">
-                  Must always have exactly on root element
-                </List.Step>
-                <List.Step step="fragment">
-                  <b>{"<>"}</b> Fragments can be used as virtual root{" "}
-                  <b>{"</>"}</b>
+                  <b>{"<> "}</b>
+                  Group elements with <b>Fragments</b> if necessary
+                  <b>{" </>"}</b>
                 </List.Step>
                 <List.Step step="inline">
-                  <b>{"{"}</b> JavaScript in curly braces (one-liners only){" "}
-                  <b>{"}"}</b>
+                  <b>{"{ "}</b> (one-line) JavaScript in curly braces
+                  <b>{" }"}</b>
                 </List.Step>
                 <List.Step step="custom">
-                  Custom components <b>{"<ExampleJSX/>"}</b>
+                  <b>{"<CustomComponents/>"}</b> are used like regular HTML elements
                 </List.Step>
-                <List.Step>
+                <List.Step step="key">
                   All elements created in a loop need a unique <b>key</b>{" "}
-                  attribute
+                  <Link
+                    href="https://kentcdodds.com/blog/understanding-reacts-key-prop"
+                    title="Kent C. Dodds - Understanding React's key prop"
+                  />
                 </List.Step>
               </List>
             </TextBlock>
             <div className="flex flex-col gap-4">
-              {step === "custom" ? (
-                <CodeBlock lineNumbers="6">{ExampleUsage}</CodeBlock>
-              ) : (
-                <Browser>
-                  <Example onSubmit={() => {}} />
-                </Browser>
-              )}
-              <CodeBlock lineNumbers={highlight}>{ExampleRaw}</CodeBlock>
+              <Browser>
+                <InteractivExampleJSX />
+              </Browser>
+              <CodeBlock lineNumbers={highlight}>
+                {ExampleJSX}
+              </CodeBlock>
             </div>
           </Section>
         ))}
@@ -139,19 +164,12 @@ function BasicsChapter() {
                   <Message.Container>
                     <Message type="antipattern">
                       <b>
-                        Always evoke components from JSX, never call them as
-                        functions!
+                        Never call function components, render them!
                       </b>
                       <br />
-                      <a
-                        href="https://kentcdodds.com/blog/dont-call-a-react-function-component"
-                        target="_blank"
-                      >
-                        <span className="flex gap-2">
-                          <IconLink />
-                          Kent C. Dodds - Don't call a React function component
-                        </span>
-                      </a>
+                      <Link href="https://kentcdodds.com/blog/dont-call-a-react-function-component">
+                        Kent C. Dodds - Don't call a React function component
+                      </Link>
                     </Message>
                   </Message.Container>
                 )}
@@ -174,15 +192,15 @@ function BasicsChapter() {
             <li>3 phases of component Lifecycle</li>
             <ul>
               <li>
-                <b>Mounting: </b>
+                <b>Mount: </b>
                 Component is added to the screen
               </li>
               <li>
-                <b>Updating: </b>
+                <b>Update: </b>
                 Component <b>re-renders</b> when states or props change
               </li>
               <li>
-                <b>Unmounting: </b>
+                <b>Unmount: </b>
                 Component is removed from the screen
               </li>
             </ul>
@@ -193,13 +211,35 @@ function BasicsChapter() {
         </TextBlock>
         <div className="flex flex-col gap-4"></div>
       </Section>
-      <Section chapter={CHAPTER} section="Component State"></Section>
+      <Section chapter={CHAPTER} section="Component State">
+        <TextBlock>
+          <div className="w-5xl p-5">
+            <CodeBlock inline>{"useState<T>(initial: T): [T, (T) => void]"}</CodeBlock>
+          </div>
+          <List>
+            <List.Step>Returns a reference to the value and to a setter function</List.Step>
+            <List.Step><b>Persistance:</b> gets reset only when component remounts</List.Step>
+            <List.Step><b>Reactive:</b> component is re-rendered every time value changes</List.Step>
+          </List>
+        </TextBlock>
+        <div className="flex flex-col gap-4">
+          <Browser>
+            <ExampleUseState />
+          </Browser>
+          <CodeBlock>
+            {ExampleUseStateRaw}
+          </CodeBlock>
+        </div>
+      </Section>
       <section>
         {[
           ["", ""],
-          ["Setup", "11,15,22,26"],
-          ["Cleanup", "16-18"],
-          ["Dependencies", "23,27"],
+          ["Setup", "11,15-23,27-28,32-33"],
+          ["Cleanup", "20-23"],
+          ["Dependencies", "12,24,29,34"],
+          ["NoDep", "11-12"],
+          ["Empty", "15-18,24"],
+          ["Deps", "27-29,32-34"],
           ["", ""],
         ].map(([step, lineNumbers]) => (
           <Section chapter={CHAPTER} section="Component Effects">
@@ -209,20 +249,23 @@ function BasicsChapter() {
               </div>
               <List active={step}>
                 <List.Step step="Setup">
-                  <b>Setup</b> runs on mount and every re-render with changed
-                  dependencies
+                  <b>Setup</b> runs on mount and whenever dependecies change
                 </List.Step>
                 <List.Step step="Cleanup">
-                  <b>Setup</b> can provide a <b>cleanup</b> funtion by returning
+                  <b>Setup</b> can provide a <b>Cleanup</b> funtion by returning
                   it
                 </List.Step>
                 <List.Step step="Cleanup">
-                  <b>Cleanup</b> runs before setup on re-render and on unmount
+                  <b>Cleanup</b> runs on unmount and before <b>Setup</b>
                 </List.Step>
                 <List.Step step="Dependencies">
-                  All props and states used in useEffect should be listed as
-                  dependencies
+                  <b>Dependecies</b> lists all the states and props <b>Setup</b> depends on
                 </List.Step>
+                <ul>
+                  <List.Step step="NoDep"><b>No list provided:</b> Setup runs on every render</List.Step>
+                  <List.Step step="Empty"><b>Empty list provided:</b> Setup runs only once on mount</List.Step>
+                  <List.Step step="Deps"><b>Dependecy list provided:</b> Setup runs only when dependecies change</List.Step>
+                </ul>
               </List>
             </TextBlock>
             <div className="flex flex-col items-start gap-4">
