@@ -1,4 +1,4 @@
-import useRenderVisual from "@/hooks/useRenderVisual"; // hidden
+import useUpdateAnimation from "@/hooks/useUpdateAnimation"; // hidden
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { useState, type DetailedHTMLProps, type HTMLAttributes } from "react";
 
@@ -6,7 +6,7 @@ type ExampleUseStateProps = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, H
 
 function ExampleUseState(props: ExampleUseStateProps) {
   const [count, setCount] = useState(0);
-  props = {...props, ...useRenderVisual()}; // hidden
+  props = {...props, ...useUpdateAnimation()}; // hidden
 
   const handleIncrease = () => {
     setCount(count + 1);
