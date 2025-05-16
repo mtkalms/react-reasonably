@@ -23,6 +23,13 @@
   --terminal-magenta: #ff2c70;
   --terminal-cyan: #80fcff;
   --terminal-white: #ffffff;
+
+  --animate-border-pulse: border-pulse 0.3s ease-in-out infinite;
+  @keyframes border-pulse {
+    100% {
+      box-shadow: 0px 0px 5px 5px rgb(250 208 0 / 0.25);
+    }
+  }
 }
 
 @layer components {

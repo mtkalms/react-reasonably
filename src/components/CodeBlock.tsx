@@ -28,10 +28,18 @@ function CodeBlock({
 
   useEffect(() => {
     if (children?.toString() === code.current) return;
-    code.current = children?.toString() || "";
+    code.current = codeString(children) || "";
     codeRef.current?.setAttribute("data-highlighted", "");
     reveal?.highlightBlock?.(codeRef.current as HTMLDivElement);
   }, [children, reveal]);
+
+  function codeString(text: React.ReactNode): string | undefined {
+    return text
+      ?.toString()
+      .split("\n")
+      .filter((d) => !d.includes("// hidden"))
+      .join("\n");
+  }
 
   return (
     <div
@@ -55,7 +63,7 @@ function CodeBlock({
           )}
           {...props}
         >
-          {children?.toString()}
+          {codeString(children)}
         </code>
       </pre>
     </div>

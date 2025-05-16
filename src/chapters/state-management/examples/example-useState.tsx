@@ -1,8 +1,12 @@
+import useRenderVisual from "@/hooks/useRenderVisual"; // hidden
 import { IconMinus, IconPlus } from "@tabler/icons-react";
-import { useState } from "react";
+import { useState, type DetailedHTMLProps, type HTMLAttributes } from "react";
 
-function ExampleUseState() {
+type ExampleUseStateProps = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
+
+function ExampleUseState(props: ExampleUseStateProps) {
   const [count, setCount] = useState(0);
+  props = {...props, ...useRenderVisual()}; // hidden
 
   const handleIncrease = () => {
     setCount(count + 1);
@@ -15,7 +19,7 @@ function ExampleUseState() {
   };
 
   return (
-    <span>
+    <span {...props}>
       <button type="button" onClick={handleIncrease}>
         <IconPlus />
       </button>
