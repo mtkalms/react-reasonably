@@ -6,7 +6,7 @@ interface LoginFormProps {
 }
 
 function LoginForm({ onSubmit, ...props }: LoginFormProps) {
-  props = { ...props, ...useUpdateAnimation() } // hidden
+  props = useUpdateAnimation(props); // hidden
 
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     const formData = new FormData(event.currentTarget)

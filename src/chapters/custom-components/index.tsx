@@ -11,6 +11,15 @@ import ExampleUncontrolledRaw from "./examples/example-uncontrolled?raw"
 import ExampleMoreUncontrolledRaw from "./examples/example-more-uncontrolled?raw"
 import Browser from "@/components/Browser";
 import CodeBlock from "@/components/CodeBlock";
+import ExampleCompositionWrongRaw from "./examples/example-composition-wrong?raw";
+import ExampleCompositionWrongUsageRaw from "./examples/example-composition-wrong-usage?raw";
+import ExampleCompositionMoreWrongRaw from "./examples/example-composition-more-wrong?raw";
+import ExampleCompositionMoreWrongUsageRaw from "./examples/example-composition-more-wrong-usage?raw";
+import ExampleCompositionRightRaw from "./examples/example-composition-right?raw";
+import ExampleCompositionRightUsageRaw from "./examples/example-composition-right-usage?raw";
+import ExampleCompositionWrongUsage from "./examples/example-composition-wrong-usage";
+import ExampleCompositionMoreWrongUsage from "./examples/example-composition-more-wrong-usage";
+import ExampleCompositionRightUsage from "./examples/example-composition-right-usage";
 
 const CHAPTER = "Custom Components";
 const TAGLINE = "Reusing Fragments";
@@ -114,15 +123,78 @@ function CustomComponentsChapter() {
           </Section>
         )}
       </section>
-      <Section chapter={CHAPTER} section="Composition">
-        <TextBlock>
-          <Message.Container>
-            <Message type="antipattern">
-              Never nest functional components!
-            </Message>
-          </Message.Container>
-        </TextBlock>
-      </Section>
+      <section>
+        {[
+          ["wrong", false],
+          ["wrong", true],
+          ["more-wrong", false],
+          ["more-wrong", true],
+          ["right", false],
+          ["right", true]
+        ].map(([step, showCode]) =>
+          <Section chapter={CHAPTER} section="Composition">
+            <TextBlock>
+              <List>
+                <List.Step pro><b>Separation of Concerns:</b> avoids prop drilling</List.Step>
+                <List.Step pro><b>Performance:</b> children are not re-rendered if parent changes</List.Step>
+              </List>
+              <Message.Container>
+                <Message type="antipattern">
+                  Never nest functional components!
+                </Message>
+              </Message.Container>
+            </TextBlock>
+            {step === "wrong" &&
+              <div className="flex flex-col gap-4">
+                {showCode ?
+                  <CodeBlock lineNumbers>
+                    {ExampleCompositionWrongUsageRaw}
+                  </CodeBlock>
+                  :
+                  <Browser>
+                    <ExampleCompositionWrongUsage />
+                  </Browser>
+                }
+                <CodeBlock lineNumbers>
+                  {ExampleCompositionWrongRaw}
+                </CodeBlock>
+              </div>
+            }
+            {step === "more-wrong" &&
+              <div className="flex flex-col gap-4">
+                {showCode ?
+                  <CodeBlock lineNumbers>
+                    {ExampleCompositionMoreWrongUsageRaw}
+                  </CodeBlock>
+                  :
+                  <Browser>
+                    <ExampleCompositionMoreWrongUsage />
+                  </Browser>
+                }
+                <CodeBlock lineNumbers>
+                  {ExampleCompositionMoreWrongRaw}
+                </CodeBlock>
+              </div>
+            }
+            {step === "right" &&
+              <div className="flex flex-col gap-4">
+                {showCode ?
+                  <CodeBlock lineNumbers>
+                    {ExampleCompositionRightUsageRaw}
+                  </CodeBlock>
+                  :
+                  <Browser>
+                    <ExampleCompositionRightUsage />
+                  </Browser>
+                }
+                <CodeBlock lineNumbers>
+                  {ExampleCompositionRightRaw}
+                </CodeBlock>
+              </div>
+            }
+          </Section>
+        )}
+      </section>
       <Section chapter={CHAPTER} section="Higher-Order Component (HOC)">
         <TextBlock>
         </TextBlock>

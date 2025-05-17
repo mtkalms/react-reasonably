@@ -16,7 +16,7 @@ function LoginForm({
   onSubmit,
   ...props
 }: LoginFormProps) {
-  props = { ...props, ...useUpdateAnimation() } // hidden
+  props = useUpdateAnimation(props); // hidden
 
   return (
     <form onSubmit={onSubmit} {...props}>

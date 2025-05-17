@@ -22,7 +22,7 @@ interface ListStepProps extends LiProps {
   pro?: boolean;
   contra?: boolean;
 }
-``
+
 function List({ active = "", ...props }: ListProps) {
   return (
     <ListStepContext.Provider value={active}>

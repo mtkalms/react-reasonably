@@ -9,7 +9,7 @@ type ExampleUseStateProps = DetailedHTMLProps<
 
 function ExampleUseState(props: ExampleUseStateProps) {
   const [count, setCount] = useState<number>(0);
-  props = { ...props, ...useUpdateAnimation() }; // hidden
+  props = useUpdateAnimation(props); // hidden
 
   const handleIncrease = () => {
     setCount((val) => val + 1);

@@ -6,7 +6,7 @@ interface LoginFormProps {
 }
 
 function LoginForm({ onSubmit, ...props }: LoginFormProps) {
-  props = { ...props, ...useUpdateAnimation() } // hidden
+  props = useUpdateAnimation(props); // hidden
 
   const [email, setEmail] = useState<string>("user@example.ca");
   const [password, setPassword] = useState<string>("");
