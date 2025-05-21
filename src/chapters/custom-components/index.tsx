@@ -3,12 +3,12 @@ import List from "@/components/List";
 import Message from "@/components/Message";
 import Section from "@components/Section";
 import clsx from "clsx";
-import ExampleControlled from "./examples/example-controlled"
-import ExampleControlledRaw from "./examples/example-controlled?raw"
-import ExampleMoreControlledRaw from "./examples/example-more-controlled?raw"
-import ExampleUncontrolled from "./examples/example-uncontrolled"
-import ExampleUncontrolledRaw from "./examples/example-uncontrolled?raw"
-import ExampleMoreUncontrolledRaw from "./examples/example-more-uncontrolled?raw"
+import ExampleControlled from "./examples/example-controlled";
+import ExampleControlledRaw from "./examples/example-controlled?raw";
+import ExampleMoreControlledRaw from "./examples/example-more-controlled?raw";
+import ExampleUncontrolled from "./examples/example-uncontrolled";
+import ExampleUncontrolledRaw from "./examples/example-uncontrolled?raw";
+import ExampleMoreUncontrolledRaw from "./examples/example-more-uncontrolled?raw";
 import Browser from "@/components/Browser";
 import CodeBlock from "@/components/CodeBlock";
 import ExampleCompositionWrongRaw from "./examples/example-composition-wrong?raw";
@@ -20,6 +20,7 @@ import ExampleCompositionRightUsageRaw from "./examples/example-composition-righ
 import ExampleCompositionWrongUsage from "./examples/example-composition-wrong-usage";
 import ExampleCompositionMoreWrongUsage from "./examples/example-composition-more-wrong-usage";
 import ExampleCompositionRightUsage from "./examples/example-composition-right-usage";
+import Link from "@/components/Link";
 
 const CHAPTER = "Custom Components";
 const TAGLINE = "Reusing Fragments";
@@ -38,19 +39,27 @@ function CustomComponentsChapter() {
         </ul>
       </Section>
       <section>
-        {["", "interest"].map(step =>
+        {["", "interest"].map((step) => (
           <Section chapter={CHAPTER} section="Types of Components">
             <TextBlock>
               <List active={step}>
                 <b className="-m-15">Deprecated</b>
-                <List.Step className={clsx(step && "line-through")}>CreateClass Factory</List.Step>
-                <List.Step className={clsx(step && "line-through")}> Mixin Pattern</List.Step>
+                <List.Step className={clsx(step && "line-through")}>
+                  CreateClass Factory
+                </List.Step>
+                <List.Step className={clsx(step && "line-through")}>
+                  {" "}
+                  Mixin Pattern
+                </List.Step>
                 <b className="-m-15">Not recomended anymore</b>
                 <List.Step>Class Component</List.Step>
                 <List.Step step="interest">Higher-Order Component</List.Step>
                 <List.Step>Render Props Pattern</List.Step>
                 <b className="-m-15">Current</b>
-                <List.Step step="interest" className={clsx(step === "interest" && "text-green-500")}>
+                <List.Step
+                  step="interest"
+                  className={clsx(step === "interest" && "text-green-500")}
+                >
                   Functional Component
                 </List.Step>
                 <List.Step step="interest">Uncontrolled Component</List.Step>
@@ -59,69 +68,78 @@ function CustomComponentsChapter() {
                 <List.Step>Server Component</List.Step>
               </List>
             </TextBlock>
-          </Section >
-        )}
-      </section >
+          </Section>
+        ))}
+      </section>
       <section>
-        {["", "more"].map(step =>
+        {["", "more"].map((step) => (
           <Section chapter={CHAPTER} section="Uncontrolled Component">
             <TextBlock>
               <b>Uncontrolled:</b> component controls it's own value
               <List>
-                <List.Step pro><b>Performance:</b> avoids re-renders on input change</List.Step>
-                <List.Step pro><b>Complexity:</b> no need for state management</List.Step>
-                <List.Step contra><b>Predictability:</b> state is managed by native DOM elements</List.Step>
-                <List.Step contra><b>Control:</b> much harder manipulate state</List.Step>
+                <List.Step pro>
+                  <b>Performance:</b> avoids re-renders on input change
+                </List.Step>
+                <List.Step pro>
+                  <b>Complexity:</b> no need for state management
+                </List.Step>
+                <List.Step contra>
+                  <b>Predictability:</b> state is managed by native DOM elements
+                </List.Step>
+                <List.Step contra>
+                  <b>Control:</b> much harder manipulate state
+                </List.Step>
               </List>
-            </TextBlock>{step == "more" ?
+            </TextBlock>
+            {step == "more" ? (
               <div className="flex flex-col gap-4">
-                <CodeBlock lineNumbers>
-                  {ExampleMoreUncontrolledRaw}
-                </CodeBlock>
+                <CodeBlock lineNumbers>{ExampleMoreUncontrolledRaw}</CodeBlock>
               </div>
-              :
+            ) : (
               <div className="flex flex-col gap-4">
                 <Browser>
                   <ExampleUncontrolled />
                 </Browser>
-                <CodeBlock lineNumbers>
-                  {ExampleUncontrolledRaw}
-                </CodeBlock>
+                <CodeBlock lineNumbers>{ExampleUncontrolledRaw}</CodeBlock>
               </div>
-            }
+            )}
           </Section>
-        )}
+        ))}
       </section>
       <section>
-        {["", "more"].map(step =>
+        {["", "more"].map((step) => (
           <Section chapter={CHAPTER} section="Controlled Component">
             <TextBlock>
               <b>Controlled:</b> parent controls components value
               <List>
-                <List.Step pro><b>Predictability:</b> state is managed by React</List.Step>
-                <List.Step pro><b>Control:</b> easy validation and conditional rendering</List.Step>
-                <List.Step contra><b>Performance:</b> re-renders every time any input changes</List.Step>
-                <List.Step contra><b>Complexity:</b> state managment for larger form get complex</List.Step>
+                <List.Step pro>
+                  <b>Predictability:</b> state is managed by React
+                </List.Step>
+                <List.Step pro>
+                  <b>Control:</b> easy validation and conditional rendering
+                </List.Step>
+                <List.Step contra>
+                  <b>Performance:</b> re-renders every time any input changes
+                </List.Step>
+                <List.Step contra>
+                  <b>Complexity:</b> state managment for larger form get complex
+                </List.Step>
               </List>
             </TextBlock>
-            {step == "more" ?
+            {step == "more" ? (
               <div className="flex flex-col gap-4">
-                <CodeBlock lineNumbers>
-                  {ExampleMoreControlledRaw}
-                </CodeBlock>
+                <CodeBlock lineNumbers>{ExampleMoreControlledRaw}</CodeBlock>
               </div>
-              :
+            ) : (
               <div className="flex flex-col gap-4">
                 <Browser>
                   <ExampleControlled />
                 </Browser>
-                <CodeBlock lineNumbers>
-                  {ExampleControlledRaw}
-                </CodeBlock>
+                <CodeBlock lineNumbers>{ExampleControlledRaw}</CodeBlock>
               </div>
-            }
+            )}
           </Section>
-        )}
+        ))}
       </section>
       <section>
         {[
@@ -130,13 +148,19 @@ function CustomComponentsChapter() {
           ["more-wrong", false],
           ["more-wrong", true],
           ["right", false],
-          ["right", true]
-        ].map(([step, showCode]) =>
+          ["right", true],
+        ].map(([step, showCode]) => (
           <Section chapter={CHAPTER} section="Composition">
             <TextBlock>
               <List>
-                <List.Step pro><b>Separation of Concerns:</b> avoids prop drilling</List.Step>
-                <List.Step pro><b>Performance:</b> children are not re-rendered if parent changes</List.Step>
+                <List.Step pro>
+                  <b>Separation of Concerns:</b> avoids prop-drilling{" "}
+                  <Link href="https://alexsidorenko.com/blog/react-prop-drilling-composition" />
+                </List.Step>
+                <List.Step pro>
+                  <b>Performance:</b> children not re-rendered if parent changes{" "}
+                  <Link href="https://alexsidorenko.com/blog/react-render-children-prop" />
+                </List.Step>
               </List>
               <Message.Container>
                 <Message type="antipattern">
@@ -144,60 +168,55 @@ function CustomComponentsChapter() {
                 </Message>
               </Message.Container>
             </TextBlock>
-            {step === "wrong" &&
+            {step === "wrong" && (
               <div className="flex flex-col gap-4">
-                {showCode ?
+                {showCode ? (
                   <CodeBlock lineNumbers>
                     {ExampleCompositionWrongUsageRaw}
                   </CodeBlock>
-                  :
+                ) : (
                   <Browser>
                     <ExampleCompositionWrongUsage />
                   </Browser>
-                }
-                <CodeBlock lineNumbers>
-                  {ExampleCompositionWrongRaw}
-                </CodeBlock>
+                )}
+                <CodeBlock lineNumbers>{ExampleCompositionWrongRaw}</CodeBlock>
               </div>
-            }
-            {step === "more-wrong" &&
+            )}
+            {step === "more-wrong" && (
               <div className="flex flex-col gap-4">
-                {showCode ?
+                {showCode ? (
                   <CodeBlock lineNumbers>
                     {ExampleCompositionMoreWrongUsageRaw}
                   </CodeBlock>
-                  :
+                ) : (
                   <Browser>
                     <ExampleCompositionMoreWrongUsage />
                   </Browser>
-                }
+                )}
                 <CodeBlock lineNumbers>
                   {ExampleCompositionMoreWrongRaw}
                 </CodeBlock>
               </div>
-            }
-            {step === "right" &&
+            )}
+            {step === "right" && (
               <div className="flex flex-col gap-4">
-                {showCode ?
+                {showCode ? (
                   <CodeBlock lineNumbers>
                     {ExampleCompositionRightUsageRaw}
                   </CodeBlock>
-                  :
+                ) : (
                   <Browser>
                     <ExampleCompositionRightUsage />
                   </Browser>
-                }
-                <CodeBlock lineNumbers>
-                  {ExampleCompositionRightRaw}
-                </CodeBlock>
+                )}
+                <CodeBlock lineNumbers>{ExampleCompositionRightRaw}</CodeBlock>
               </div>
-            }
+            )}
           </Section>
-        )}
+        ))}
       </section>
       <Section chapter={CHAPTER} section="Higher-Order Component (HOC)">
-        <TextBlock>
-        </TextBlock>
+        <TextBlock></TextBlock>
       </Section>
     </>
   );

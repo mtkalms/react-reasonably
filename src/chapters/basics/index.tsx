@@ -8,7 +8,7 @@ import destructuring from "./examples/example-destructuring?raw";
 import initializer from "./examples/example-initializer?raw";
 import evaluation from "./examples/example-evaluation?raw";
 import ExampleUseEffect from "./examples/example-useEffect?raw";
-import Message from "@/components/Message";
+import Message, { MessageContainer } from "@/components/Message";
 import List from "@/components/List";
 import Link from "@/components/Link";
 import ExampleJSX from "./examples/example-jsx?raw";
@@ -51,13 +51,20 @@ function BasicsChapter() {
             </ul>
             <li>Markup and component-based architecture</li>
             <ul>
-              <li><b>JSX:</b> Javascript language extension for <b>{"<html/>"}</b>-like markup</li>
-              <li>Custom components that work like regular HTML element tags</li>
+              <li>
+                <b>JSX:</b> Javascript language extension for <b>{"<html/>"}</b>
+                -like markup
+              </li>
+              <li>
+                Custom components that work like regular HTML element tags
+              </li>
             </ul>
             <li>Extensive community and ecosystem</li>
             <ul>
               <li>React is currently by far the most popular web framework</li>
-              <li>Countless well-maintained plugins, libraries and platforms</li>
+              <li>
+                Countless well-maintained plugins, libraries and platforms
+              </li>
             </ul>
           </ul>
         </TextBlock>
@@ -77,7 +84,9 @@ function BasicsChapter() {
         ].map(([step, highlight], idx) => (
           <Section chapter={CHAPTER} section="JSX" key={idx}>
             <TextBlock>
-              <p><b>Rules of JSX</b></p>
+              <p>
+                <b>Rules of JSX</b>
+              </p>
               <List active={step as string}>
                 <List.Step step="camelCase">
                   Use <b>camelCase</b> for all HTML attributes
@@ -103,7 +112,8 @@ function BasicsChapter() {
                   <b>{" }"}</b>
                 </List.Step>
                 <List.Step step="custom">
-                  <b>{"<CustomComponents/>"}</b> are used like regular HTML elements
+                  <b>{"<CustomComponents/>"}</b> are used like regular HTML
+                  elements
                 </List.Step>
                 <List.Step step="key">
                   All elements created in a loop need a unique <b>key</b>{" "}
@@ -118,9 +128,7 @@ function BasicsChapter() {
               <Browser>
                 <InteractivExampleJSX />
               </Browser>
-              <CodeBlock lineNumbers={highlight}>
-                {ExampleJSX}
-              </CodeBlock>
+              <CodeBlock lineNumbers={highlight}>{ExampleJSX}</CodeBlock>
             </div>
           </Section>
         ))}
@@ -177,9 +185,7 @@ function BasicsChapter() {
                 {showMessages && (
                   <Message.Container>
                     <Message type="antipattern">
-                      <b>
-                        Never call function components, render them!
-                      </b>
+                      <b>Never call function components, render them!</b>
                       <br />
                       <Link href="https://kentcdodds.com/blog/dont-call-a-react-function-component">
                         Kent C. Dodds - Don't call a React function component
@@ -189,29 +195,28 @@ function BasicsChapter() {
                 )}
               </TextBlock>
               <div className="flex flex-col gap-4">
-                {(step === "")
-                  ? <Browser className="min-h-[312px]">
+                {step === "" ? (
+                  <Browser className="min-h-[312px]">
                     <LoginForm>
-                      <div className="mb-5 border-b-2 border(--primary)">
-                        <IconLogin className="mx-1 -mt-[0.15lh] size-[0.9em] py-0 inline-block align-middle" />
+                      <div className="border(--primary) mb-5 border-b-2">
+                        <IconLogin className="mx-1 -mt-[0.15lh] inline-block size-[0.9em] py-0 align-middle" />
                         Login
                       </div>
                     </LoginForm>
-
                   </Browser>
-                  : <CodeBlock lineNumbers={highlightParent}>
+                ) : (
+                  <CodeBlock lineNumbers={highlightParent}>
                     {ExampleUsage}
                   </CodeBlock>
-                }
+                )}
                 <CodeBlock lineNumbers={highlightComponent}>
                   {ExampleRaw}
                 </CodeBlock>
               </div>
-            </Section >
+            </Section>
           ),
-        )
-        }
-      </section >
+        )}
+      </section>
       <Section chapter={CHAPTER} section="Component Lifecycle">
         <TextBlock>
           <ul>
@@ -235,22 +240,44 @@ function BasicsChapter() {
             </li>
           </ul>
         </TextBlock>
+        <MessageContainer>
+          <Message type="info">
+            <Link href="https://react.gg/visualized">
+              React.gg - React Visualized
+            </Link>
+          </Message>
+        </MessageContainer>
         <div className="flex flex-col gap-4"></div>
       </Section>
       <Section chapter={CHAPTER} section="Component State">
         <TextBlock>
           <div className="w-5xl p-5">
-            <CodeBlock inline>{"useState<T>(initial: T): [T, (T) => void]"}</CodeBlock>
+            <CodeBlock inline>
+              {"useState<T>(initial: T): [T, (T) => void]"}
+            </CodeBlock>
           </div>
           <List>
-            <List.Step>Returns a reference to the <b>value</b> and a <b>setter</b> function</List.Step>
+            <List.Step>
+              Returns a reference to the <b>value</b> and a <b>setter</b>{" "}
+              function
+            </List.Step>
             <ul>
-              <List.Step>Both can be renamed in-place with <b>destructuring</b></List.Step>
-              <List.Step><b>Setter function</b> triggers asynchronous update</List.Step>
-              <List.Step><b>Setter function</b> also accepts update function</List.Step>
+              <List.Step>
+                Both can be renamed in-place with <b>destructuring</b>
+              </List.Step>
+              <List.Step>
+                <b>Setter function</b> triggers asynchronous update
+              </List.Step>
+              <List.Step>
+                <b>Setter function</b> also accepts update function
+              </List.Step>
             </ul>
-            <List.Step><b>Persistance:</b> resets only when component remounts</List.Step>
-            <List.Step><b>Reactive:</b> component re-renders when value changes</List.Step>
+            <List.Step>
+              <b>Persistance:</b> resets only when component remounts
+            </List.Step>
+            <List.Step>
+              <b>Reactive:</b> component re-renders when value changes
+            </List.Step>
             <ul>
               <List.Step>Only performs shallow comparison</List.Step>
             </ul>
@@ -260,9 +287,7 @@ function BasicsChapter() {
           <Browser>
             <ExampleUseState />
           </Browser>
-          <CodeBlock>
-            {ExampleUseStateRaw}
-          </CodeBlock>
+          <CodeBlock>{ExampleUseStateRaw}</CodeBlock>
         </div>
       </Section>
       <section>
@@ -293,12 +318,20 @@ function BasicsChapter() {
                   <b>Cleanup</b> runs on unmount and before <b>Setup</b>
                 </List.Step>
                 <List.Step step="Dependencies">
-                  <b>Dependecies</b> lists all the states and props <b>Setup</b> depends on
+                  <b>Dependecies</b> lists all the states and props <b>Setup</b>{" "}
+                  depends on
                 </List.Step>
                 <ul>
-                  <List.Step step="NoDep"><b>No list provided:</b> Setup runs on every render</List.Step>
-                  <List.Step step="Empty"><b>Empty list provided:</b> Setup runs only once on mount</List.Step>
-                  <List.Step step="Deps"><b>Dependecy list provided:</b> Setup runs only when dependecies change</List.Step>
+                  <List.Step step="NoDep">
+                    <b>No list provided:</b> Setup runs on every render
+                  </List.Step>
+                  <List.Step step="Empty">
+                    <b>Empty list provided:</b> Setup runs only once on mount
+                  </List.Step>
+                  <List.Step step="Deps">
+                    <b>Dependecy list provided:</b> Setup runs only when
+                    dependecies change
+                  </List.Step>
                 </ul>
               </List>
             </TextBlock>
