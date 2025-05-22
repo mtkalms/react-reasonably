@@ -11,6 +11,8 @@ interface CodeBlockProps
   lineNumberStart?: number;
   language?: string;
   inline?: boolean;
+  start?: number;
+  end?: number;
 }
 
 function CodeBlock({
@@ -20,6 +22,8 @@ function CodeBlock({
   language = "typescript",
   inline,
   className,
+  start = 1,
+  end = undefined,
   ...props
 }: CodeBlockProps) {
   const code = useRef<string>(null);
@@ -38,6 +42,7 @@ function CodeBlock({
       ?.toString()
       .split("\n")
       .filter((d) => !d.includes("// hidden"))
+      .slice(start - 1, end)
       .join("\n");
   }
 

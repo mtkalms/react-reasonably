@@ -177,7 +177,7 @@ function CustomComponentsChapter() {
             {step === "wrong" && (
               <div className="flex flex-col gap-4">
                 {showCode ? (
-                  <CodeBlock lineNumbers>
+                  <CodeBlock lineNumbers start={11} end={15}>
                     {ExampleCompositionWrongUsageRaw}
                   </CodeBlock>
                 ) : (
@@ -185,13 +185,15 @@ function CustomComponentsChapter() {
                     <ExampleCompositionWrongUsage />
                   </Browser>
                 )}
-                <CodeBlock lineNumbers>{ExampleCompositionWrongRaw}</CodeBlock>
+                <CodeBlock lineNumbers end={41}>
+                  {ExampleCompositionWrongRaw}
+                </CodeBlock>
               </div>
             )}
             {step === "more-wrong" && (
               <div className="flex flex-col gap-4">
                 {showCode ? (
-                  <CodeBlock lineNumbers>
+                  <CodeBlock lineNumbers start={11} end={15}>
                     {ExampleCompositionMoreWrongUsageRaw}
                   </CodeBlock>
                 ) : (
@@ -199,7 +201,7 @@ function CustomComponentsChapter() {
                     <ExampleCompositionMoreWrongUsage />
                   </Browser>
                 )}
-                <CodeBlock lineNumbers>
+                <CodeBlock lineNumbers end={42}>
                   {ExampleCompositionMoreWrongRaw}
                 </CodeBlock>
               </div>
@@ -207,7 +209,7 @@ function CustomComponentsChapter() {
             {step === "right" && (
               <div className="flex flex-col gap-4">
                 {showCode ? (
-                  <CodeBlock lineNumbers>
+                  <CodeBlock lineNumbers start={11} end={22}>
                     {ExampleCompositionRightUsageRaw}
                   </CodeBlock>
                 ) : (
@@ -215,7 +217,9 @@ function CustomComponentsChapter() {
                     <ExampleCompositionRightUsage />
                   </Browser>
                 )}
-                <CodeBlock lineNumbers>{ExampleCompositionRightRaw}</CodeBlock>
+                <CodeBlock lineNumbers end={37}>
+                  {ExampleCompositionRightRaw}
+                </CodeBlock>
               </div>
             )}
           </Section>
@@ -232,7 +236,9 @@ function CustomComponentsChapter() {
               <b>Prop confusion: </b> props defined on different levels
               <Link href="https://www.robinwieruch.de/react-hooks-higher-order-components/" />
             </List.Step>
-            <List.Step>Largly superceded by hooks</List.Step>
+            <List.Step contra>
+              <b>Obsolete: </b>Largly superceded by hooks
+            </List.Step>
           </List>
         </TextBlock>
         <MessageContainer>
