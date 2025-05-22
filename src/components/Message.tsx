@@ -47,7 +47,7 @@ function Message({ className, children, type, ...props }: MessageProps) {
         <div className="flex w-20 items-center justify-center">
           <MessageIcon type={type} size={36} />
         </div>
-        <span className="py-5 text-[18pt]">{children}</span>
+        <span className="py-5 text-left text-[18pt]">{children}</span>
       </div>
     </div>
   );

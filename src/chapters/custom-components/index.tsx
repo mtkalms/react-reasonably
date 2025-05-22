@@ -1,6 +1,6 @@
 import TextBlock from "@/components/Block";
 import List from "@/components/List";
-import Message from "@/components/Message";
+import Message, { MessageContainer } from "@/components/Message";
 import Section from "@components/Section";
 import clsx from "clsx";
 import ExampleControlled from "./examples/example-controlled";
@@ -89,6 +89,9 @@ function CustomComponentsChapter() {
                 <List.Step contra>
                   <b>Control:</b> much harder manipulate state
                 </List.Step>
+                <List.Step>
+                  Typical props: <b>defaultValue</b> and callbacks
+                </List.Step>
               </List>
             </TextBlock>
             {step == "more" ? (
@@ -123,6 +126,9 @@ function CustomComponentsChapter() {
                 </List.Step>
                 <List.Step contra>
                   <b>Complexity:</b> state managment for larger form get complex
+                </List.Step>
+                <List.Step>
+                  Typical props: <b>value</b>, <b>onChange</b> and callbacks
                 </List.Step>
               </List>
             </TextBlock>
@@ -216,7 +222,27 @@ function CustomComponentsChapter() {
         ))}
       </section>
       <Section chapter={CHAPTER} section="Higher-Order Component (HOC)">
-        <TextBlock></TextBlock>
+        <TextBlock>
+          <List>
+            <List.Step>
+              Takes a component as input and returns an enhanced version
+            </List.Step>
+            <List.Step>Can pass extra props to wrapped component</List.Step>
+            <List.Step contra>
+              <b>Prop confusion: </b> props defined on different levels
+              <Link href="https://www.robinwieruch.de/react-hooks-higher-order-components/" />
+            </List.Step>
+            <List.Step>Largly superceded by hooks</List.Step>
+          </List>
+        </TextBlock>
+        <MessageContainer>
+          <Message type="info">
+            <Link href="https://www.robinwieruch.de/react-higher-order-components/">
+              Robin Wieruch - Higher-Order Components (HOC)
+            </Link>
+            <br />
+          </Message>
+        </MessageContainer>
       </Section>
     </>
   );
