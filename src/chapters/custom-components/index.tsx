@@ -168,11 +168,13 @@ function CustomComponentsChapter() {
                   <Link href="https://alexsidorenko.com/blog/react-render-children-prop" />
                 </List.Step>
               </List>
-              <Message.Container>
-                <Message type="antipattern">
-                  Never nest functional components!
-                </Message>
-              </Message.Container>
+              {step === "more-wrong" && (
+                <Message.Container>
+                  <Message type="antipattern">
+                    Never nest functional components!
+                  </Message>
+                </Message.Container>
+              )}
             </TextBlock>
             {step === "wrong" && (
               <div className="flex flex-col gap-4">
