@@ -293,12 +293,12 @@ function BasicsChapter() {
       <section>
         {[
           ["", ""],
-          ["Setup", "11,15-23,27-28,32-33"],
-          ["Cleanup", "20-23"],
-          ["Dependencies", "12,24,29,34"],
-          ["NoDep", "11-12"],
-          ["Empty", "15-18,24"],
-          ["Deps", "27-29,32-34"],
+          ["Setup", "11-12,16-19,28-29"],
+          ["Cleanup", "20-24"],
+          ["Dependencies", "10-13,15-18,24-25,27-30"],
+          ["NoDep", "10-13"],
+          ["Empty", "15-18,24-25"],
+          ["Deps", "27-30"],
           ["", ""],
         ].map(([step, lineNumbers]) => (
           <Section chapter={CHAPTER} section="Component Effects">
