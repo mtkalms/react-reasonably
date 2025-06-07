@@ -231,9 +231,15 @@ function CustomComponentsChapter() {
         <TextBlock>
           <List>
             <List.Step>
+              Adapts the higher-order function pattern to React components
+            </List.Step>
+            <List.Step>
               Takes a component as input and returns an enhanced version
             </List.Step>
             <List.Step>Can pass extra props to wrapped component</List.Step>
+            <List.Step pro>
+              <b>Reusability:</b> allows to reuse logic across components
+            </List.Step>
             <List.Step contra>
               <b>Prop confusion: </b> props defined on different levels
               <Link href="https://www.robinwieruch.de/react-hooks-higher-order-components/" />
